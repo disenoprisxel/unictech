@@ -57,18 +57,18 @@ export default function Home() {
       <section className="py-16 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <p
-            className="text-xs font-bold uppercase tracking-widest mb-4"
-            style={{ color: ACCENT, letterSpacing: '3px' }}
+            className="text-[13px] font-bold uppercase tracking-[3px] mb-4"
+            style={{ color: ACCENT }}
           >
             SOMOS TU MEJOR ELECCIÓN
           </p>
           <h2
-            className="font-bold mb-5 leading-snug text-gray-900"
-            style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)' }}
+            className="font-black mb-5 leading-tight text-gray-900"
+            style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)' }}
           >
             Sistemas de Calefacción Y de Agua Caliente
           </h2>
-          <p className="text-gray-500 text-base leading-relaxed max-w-xl mx-auto">
+          <p className="text-gray-500 text-[17px] leading-relaxed max-w-xl mx-auto font-normal">
             Proporcionamos a nuestros clientes soluciones de confort, diseños de calidad,
             sistemas de bajo impacto ambiental y de alta eficiencia.
           </p>
@@ -95,24 +95,24 @@ export default function Home() {
           {/* Texto derecha */}
           <div>
             <p
-              className="text-xs font-bold uppercase tracking-widest mb-2"
-              style={{ color: ACCENT, letterSpacing: '3px' }}
+              className="text-[13px] font-bold uppercase tracking-[3px] mb-3"
+              style={{ color: ACCENT }}
             >
               ¿QUIENES SOMOS?
             </p>
             <h2
-              className="font-bold text-gray-900 mb-3 leading-snug"
-              style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
+              className="font-black text-gray-900 mb-3 leading-tight"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)' }}
             >
-              Líderes en sistemas de<br />calefacción
+              Líderes en sistemas de calefacción
             </h2>
             <p
-              className="text-xs font-bold uppercase tracking-widest mb-4"
-              style={{ color: ACCENT, letterSpacing: '3px' }}
+              className="text-[13px] font-bold uppercase tracking-[3px] mb-5"
+              style={{ color: ACCENT }}
             >
               SOLUCIONES DE CONFORT
             </p>
-            <p className="text-gray-700 leading-relaxed text-sm text-justify mb-6">
+            <p className="text-gray-800 leading-relaxed text-[16px] text-justify mb-6 font-normal">
               Somos un equipo de trabajo, que a través de las buenas prácticas
               profesionales proporcionara a sus clientes soluciones de confort,
               diseños de calidad, sistemas de bajo impacto ambiental y de alta
@@ -188,8 +188,8 @@ export default function Home() {
         {/* Overlay oscuro */}
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.6)' }} />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="font-bold text-4xl mb-6">Trayectoria</h2>
-          <p className="text-white/90 text-base leading-relaxed">
+          <h2 className="font-black mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>Trayectoria</h2>
+          <p className="text-white/90 text-[17px] leading-relaxed">
             UNICTECH SAS se destaca por su compromiso, responsabilidad, mejora continua en las prácticas
             empresariales, medio ambientales y sostenibles que garanticen la ejecución completa y
             satisfactoria de los proyectos.
@@ -200,7 +200,7 @@ export default function Home() {
       {/* ── 4. Prácticas — 5 tarjetas con íconos ── */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-bold text-3xl text-gray-900 text-center mb-10">Prácticas</h2>
+          <h2 className="font-black text-gray-900 text-center mb-10" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)' }}>Prácticas</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {practicas.map((p, i) => (
               <div
@@ -210,7 +210,7 @@ export default function Home() {
                 <div style={{ color: ACCENT }} className="mb-4">
                   {p.icon}
                 </div>
-                <p className="text-sm font-semibold text-gray-800 leading-snug">{p.label}</p>
+                <p className="text-[15px] font-bold text-gray-800 leading-snug">{p.label}</p>
               </div>
             ))}
           </div>
@@ -221,12 +221,12 @@ export default function Home() {
       <section className="py-12 px-6" style={{ backgroundColor: '#f0f0f0' }}>
         <div className="max-w-5xl mx-auto text-center">
           <p
-            className="text-xs font-bold uppercase tracking-widest mb-2"
-            style={{ color: ACCENT, letterSpacing: '4px' }}
+            className="text-[13px] font-bold uppercase tracking-[3px] mb-3"
+            style={{ color: ACCENT }}
           >
             MARCAS ALIADAS
           </p>
-          <h2 className="font-bold text-2xl text-gray-900 mb-8 uppercase tracking-wide">
+          <h2 className="font-black text-gray-900 mb-8 uppercase tracking-wide" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}>
             Trabajamos con las mejores marcas
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-6">
@@ -248,8 +248,8 @@ export default function Home() {
         className="py-14 px-6 text-center text-white"
         style={{ backgroundColor: ACCENT }}
       >
-        <h2 className="font-bold text-3xl mb-3">¿Listo para tu proyecto?</h2>
-        <p className="mb-6 text-white/90">Contáctanos y nuestro equipo te asesorará sin costo.</p>
+        <h2 className="font-black mb-3" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>¿Listo para tu proyecto?</h2>
+        <p className="mb-6 text-white/90 text-[17px]">Contáctanos y nuestro equipo te asesorará sin costo.</p>
         <Link
           href="/contacto"
           className="inline-block px-8 py-3 rounded font-bold uppercase tracking-wide text-white border-2 border-white transition-colors hover:bg-white hover:text-[#e63012]"

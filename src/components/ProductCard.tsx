@@ -8,17 +8,17 @@ interface ProductCardProps {
 export default function ProductCard({ name, tagline, features, benefits }: ProductCardProps) {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-      <div className="p-6 md:p-8">
+      <div className="p-7 md:p-9">
         <h3
-          className="font-extrabold text-xl uppercase mb-2"
-          style={{ color: 'var(--azul-oscuro)' }}
+          className="font-black uppercase mb-2 leading-tight"
+          style={{ color: 'var(--azul-oscuro)', fontSize: 'clamp(1.1rem, 2vw, 1.35rem)' }}
         >
           {name}
         </h3>
         {tagline && (
           <p
-            className="text-sm font-semibold uppercase tracking-wide mb-5"
-            style={{ color: 'var(--azul-cielo)' }}
+            className="text-[13px] font-bold uppercase tracking-wide mb-6"
+            style={{ color: '#e63012' }}
           >
             {tagline}
           </p>
@@ -27,15 +27,15 @@ export default function ProductCard({ name, tagline, features, benefits }: Produ
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <h4
-              className="text-xs font-bold uppercase tracking-widest mb-3"
-              style={{ color: 'var(--dorado)' }}
+              className="text-[12px] font-black uppercase tracking-widest mb-3"
+              style={{ color: '#e63012' }}
             >
               Características
             </h4>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               {features.map((f, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span style={{ color: 'var(--azul-cielo)', flexShrink: 0 }}>✓</span>
+                <li key={i} className="flex items-start gap-2 text-[15px] text-gray-700 font-normal leading-snug">
+                  <span style={{ color: '#e63012', flexShrink: 0, fontWeight: 700 }}>✓</span>
                   {f}
                 </li>
               ))}
@@ -45,15 +45,15 @@ export default function ProductCard({ name, tagline, features, benefits }: Produ
           {benefits && benefits.length > 0 && (
             <div>
               <h4
-                className="text-xs font-bold uppercase tracking-widest mb-3"
-                style={{ color: 'var(--dorado)' }}
+                className="text-[12px] font-black uppercase tracking-widest mb-3"
+                style={{ color: '#e63012' }}
               >
                 Beneficios
               </h4>
-              <ul className="space-y-1.5">
+              <ul className="space-y-2">
                 {benefits.map((b, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span style={{ color: 'var(--azul-cielo)', flexShrink: 0 }}>★</span>
+                  <li key={i} className="flex items-start gap-2 text-[15px] text-gray-700 font-normal leading-snug">
+                    <span style={{ color: '#e63012', flexShrink: 0, fontWeight: 700 }}>★</span>
                     {b}
                   </li>
                 ))}

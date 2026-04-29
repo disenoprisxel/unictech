@@ -12,20 +12,22 @@ export default function PageHero({ tag, title, subtitle }: PageHeroProps) {
     >
       {tag && (
         <p
-          className="text-sm font-bold uppercase tracking-widest mb-3"
-          style={{ color: 'var(--azul-cielo)', letterSpacing: '4px' }}
+          className="text-[13px] font-bold uppercase tracking-[3px] mb-4"
+          style={{ color: '#e63012' }}
         >
           {tag}
         </p>
       )}
       <h1
-        className="font-extrabold uppercase leading-tight"
-        style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', letterSpacing: '2px' }}
+        className="font-black uppercase leading-tight text-white"
+        style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', letterSpacing: '1px' }}
       >
         {title}
       </h1>
       {subtitle && (
-        <p className="mt-3 text-white/70 text-base max-w-2xl mx-auto">{subtitle}</p>
+        <p className="mt-4 text-white/75 text-[17px] leading-relaxed max-w-2xl mx-auto font-normal">
+          {subtitle}
+        </p>
       )}
     </section>
   );
