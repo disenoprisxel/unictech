@@ -100,7 +100,6 @@ export default function Navbar() {
               width={56}
               height={56}
               className="object-contain"
-              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
             />
             <div className="leading-tight">
               <p className="text-white font-extrabold text-lg tracking-wider uppercase" style={{ lineHeight: 1.1 }}>

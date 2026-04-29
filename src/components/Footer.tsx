@@ -1,50 +1,108 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
-const links = [
-  { label: 'Inicio', href: '/' },
-  { label: 'Agua Caliente', href: '/agua-caliente' },
-  { label: 'Piscinas', href: '/calentamiento-piscinas' },
+const enlaces = [
+  { label: 'Agua caliente', href: '/agua-caliente' },
+  { label: 'Calentamiento Piscinas', href: '/calentamiento-piscinas' },
   { label: 'Calefacción', href: '/calefaccion' },
   { label: 'Chimeneas', href: '/chimeneas' },
-  { label: 'Energías Sostenibles', href: '/energias-sostenibles' },
+  { label: 'Energias Sostenibles', href: '/energias-sostenibles', accent: true },
   { label: 'Proyectos', href: '/proyectos' },
   { label: 'Mantenimiento', href: '/servicio-de-mantenimiento' },
-  { label: 'Contacto', href: '/contacto' },
+  { label: 'Contácto', href: '/contacto' },
 ];
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: 'var(--azul-oscuro)', color: 'white' }}>
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Brand */}
+    <footer style={{ backgroundColor: '#111111', color: '#aaa' }}>
+
+      {/* ── Main content ── */}
+      <div className="max-w-7xl mx-auto px-8 py-14 grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        {/* Col 1 — Logo + descripción + redes */}
         <div>
-          <p className="font-extrabold text-2xl tracking-widest mb-3">
-            <span style={{ color: 'var(--azul-cielo)' }}>UNI</span>
-            <span style={{ color: 'var(--dorado)' }}>CTECH</span>
+          {/* Logo */}
+          <div className="flex items-center gap-3 mb-4">
+            <Image
+              src="/logo.png"
+              alt="Unictech SAS"
+              width={52}
+              height={52}
+              className="object-contain"
+            />
+            <div className="leading-tight">
+              <p className="text-white font-extrabold text-base tracking-wider uppercase" style={{ lineHeight: 1.1 }}>
+                UNICTECH SAS
+              </p>
+              <p className="text-gray-400 text-[11px] italic font-light tracking-wide">
+                Soluciones de confort
+              </p>
+            </div>
+          </div>
+
+          {/* Descripción */}
+          <p className="text-sm leading-relaxed mb-6" style={{ color: '#888' }}>
+            Proporcionamos a nuestros clientes soluciones de confort, diseños de calidad,
+            sistemas de bajo impacto ambiental y de alta eficiencia.
           </p>
-          <p className="text-sm text-white/70 leading-relaxed">
-            Soluciones de confort, diseños de calidad, sistemas de bajo impacto ambiental
-            y de alta eficiencia para hogares y empresas en Colombia.
-          </p>
-          <div className="flex gap-4 mt-4">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"
-              className="text-white/60 hover:text-white transition-colors text-sm font-semibold uppercase">FB</a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"
-              className="text-white/60 hover:text-white transition-colors text-sm font-semibold uppercase">IG</a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"
-              className="text-white/60 hover:text-white transition-colors text-sm font-semibold uppercase">YT</a>
+
+          {/* Redes sociales — íconos cuadrado redondeado oscuro */}
+          <div className="flex gap-2">
+            {/* Facebook */}
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="w-9 h-9 flex items-center justify-center rounded text-white transition-colors"
+              style={{ backgroundColor: '#2a2a2a' }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            {/* YouTube */}
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+              className="w-9 h-9 flex items-center justify-center rounded text-white transition-colors"
+              style={{ backgroundColor: '#2a2a2a' }}
+            >
+              <svg width="16" height="12" viewBox="0 0 24 17" fill="currentColor">
+                <path d="M23.495 2.205a3.02 3.02 0 0 0-2.122-2.136C19.505 0 12 0 12 0S4.495 0 2.627.07a3.02 3.02 0 0 0-2.122 2.136C0 4.073 0 8 0 8s0 3.927.505 5.795a3.02 3.02 0 0 0 2.122 2.136C4.495 16 12 16 12 16s7.505 0 9.373-.069a3.02 3.02 0 0 0 2.122-2.136C24 11.927 24 8 24 8s0-3.927-.505-5.795zM9.545 11.273V4.727L15.818 8l-6.273 3.273z"/>
+              </svg>
+            </a>
+            {/* Instagram */}
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="w-9 h-9 flex items-center justify-center rounded text-white transition-colors"
+              style={{ backgroundColor: '#2a2a2a' }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
           </div>
         </div>
 
-        {/* Nav links */}
+        {/* Col 2 — Enlaces */}
         <div>
-          <h3 className="font-bold text-sm uppercase tracking-widest mb-4" style={{ color: 'var(--azul-cielo)' }}>
-            Navegación
-          </h3>
-          <ul className="space-y-2">
-            {links.map((l) => (
+          <h3 className="text-white font-bold text-base mb-5">Enlaces</h3>
+          <ul className="space-y-2.5">
+            {enlaces.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                <Link
+                  href={l.href}
+                  className="text-sm transition-colors hover:text-white"
+                  style={{ color: l.accent ? '#e63012' : '#888' }}
+                >
                   {l.label}
                 </Link>
               </li>
@@ -52,25 +110,58 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* Col 3 — Contáctanos */}
         <div>
-          <h3 className="font-bold text-sm uppercase tracking-widest mb-4" style={{ color: 'var(--azul-cielo)' }}>
-            Contacto
-          </h3>
-          <ul className="space-y-3 text-sm text-white/70">
-            <li>📍 Av. Calle 100 # 60-04, Bogotá</li>
-            <li>📞 <a href="tel:+5716015318327" className="hover:text-white transition-colors">(601) 531 8327</a></li>
-            <li>✉️ <a href="mailto:gerencia@unictechsas.com" className="hover:text-white transition-colors">gerencia@unictechsas.com</a></li>
-            <li>✉️ <a href="mailto:proyectos@unictechsas.com" className="hover:text-white transition-colors">proyectos@unictechsas.com</a></li>
-            <li>🕐 Lun–Vie 8:00 AM – 5:00 PM</li>
-            <li>🕐 Sáb 8:00 AM – 1:00 PM</li>
+          <h3 className="text-white font-bold text-base mb-5">Contáctanos</h3>
+          <ul className="space-y-2.5 text-sm" style={{ color: '#888' }}>
+            <li>AV. Calle 100 # 60-04</li>
+            <li>
+              <a href="mailto:gerencia@unictechsas.com" className="hover:text-white transition-colors">
+                gerencia@unictechsas.com
+              </a>
+            </li>
+            <li>
+              <a href="mailto:proyectos@unictechsas.com" className="hover:text-white transition-colors">
+                proyectos@unictechsas.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:+5716015318327" className="hover:text-white transition-colors">
+                (601) 531 8327
+              </a>
+            </li>
+            <li>
+              <a href="tel:+573106782256" className="hover:text-white transition-colors">
+                (+57) 310 678 2256
+              </a>
+            </li>
+            <li>
+              <a href="tel:+573132502585" className="hover:text-white transition-colors">
+                (+57) 313 250 2585
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-4 text-center text-xs text-white/40">
-        © {new Date().getFullYear()} Unictech S.A.S. — Todos los derechos reservados
+      {/* ── Bottom bar ── */}
+      <div
+        className="border-t px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs"
+        style={{ borderColor: '#222', color: '#555' }}
+      >
+        <p>
+          © Unictech SAS. Todos los derechos reservados.{' '}
+          <a href="#" className="hover:text-gray-300 transition-colors">Política de Privacidad</a>
+          {' '}-{' '}
+          <a href="#" className="hover:text-gray-300 transition-colors">Términos y Condiciones</a>
+        </p>
+        <p>
+          Hecho con{' '}
+          <span style={{ color: '#e63012' }}>♥</span>
+          {' '}por Prisxel
+        </p>
       </div>
+
     </footer>
   );
 }
