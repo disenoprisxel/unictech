@@ -26,7 +26,7 @@ export default function Navbar() {
 
       {/* ── Top bar ── */}
       <div className="w-full bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-10">
+        <div className="w-full px-10 flex items-center justify-between h-10">
           <div className="flex items-center gap-7 text-gray-600 text-[13px] font-semibold">
             <span className="flex items-center gap-2">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e63012" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -68,7 +68,7 @@ export default function Navbar() {
 
       {/* ── Main navbar ── */}
       <div className="w-full" style={{ backgroundColor: 'var(--azul-oscuro)', borderBottom: '4px solid #e63012' }}>
-        <div className="max-w-7xl mx-auto px-5 flex items-center justify-between h-[82px]">
+        <div className="w-full px-10 flex items-center justify-between h-[96px]">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
@@ -90,12 +90,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav — Roboto Bold 15px white */}
-          <nav className="hidden xl:flex items-center gap-0.5" style={{ fontFamily: "'Roboto', sans-serif" }}>
+          <nav className="hidden xl:flex items-center" style={{ fontFamily: "'Roboto', sans-serif" }}>
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="px-3 py-2 font-bold transition-colors whitespace-nowrap"
+                className="px-4 py-3 font-bold transition-colors whitespace-nowrap"
                 style={{ color: pathname === l.href ? '#e63012' : 'white', fontFamily: "'Roboto', sans-serif", fontSize: '15px' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#e63012'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = pathname === l.href ? '#e63012' : 'white'; }}
@@ -119,7 +119,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {open && (
-          <nav className="xl:hidden px-5 pb-4 flex flex-col" style={{ backgroundColor: 'var(--azul-oscuro)', fontFamily: "'Roboto', sans-serif" }}>
+          <nav className="xl:hidden px-10 pb-4 flex flex-col" style={{ backgroundColor: 'var(--azul-oscuro)', fontFamily: "'Roboto', sans-serif" }}>
             {links.map((l) => (
               <Link
                 key={l.href}
