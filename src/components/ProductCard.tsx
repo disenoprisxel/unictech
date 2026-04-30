@@ -9,16 +9,21 @@ export default function ProductCard({ name, tagline, features, benefits }: Produ
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
       <div className="p-7 md:p-9">
-        <h3
-          className="font-black uppercase mb-2 leading-tight"
-          style={{ color: 'var(--azul-oscuro)', fontSize: 'clamp(1.1rem, 2vw, 1.35rem)' }}
-        >
+        {/* Nombre del producto — Roboto Bold (hereda de h3 global) */}
+        <h3 className="mb-2 leading-tight uppercase" style={{ color: 'var(--azul-oscuro)' }}>
           {name}
         </h3>
+
         {tagline && (
           <p
-            className="text-[13px] font-bold uppercase tracking-wide mb-6"
-            style={{ color: '#e63012' }}
+            className="uppercase mb-6"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 700,
+              fontSize: '15px',
+              letterSpacing: '1px',
+              color: '#e63012',
+            }}
           >
             {tagline}
           </p>
@@ -26,15 +31,20 @@ export default function ProductCard({ name, tagline, features, benefits }: Produ
 
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <h4
-              className="text-[12px] font-black uppercase tracking-widest mb-3"
-              style={{ color: '#e63012' }}
+            <p
+              className="uppercase tracking-widest mb-3"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 700,
+                fontSize: '12px',
+                color: '#e63012',
+              }}
             >
               Características
-            </h4>
+            </p>
             <ul className="space-y-2">
               {features.map((f, i) => (
-                <li key={i} className="flex items-start gap-2 text-[15px] text-gray-700 font-normal leading-snug">
+                <li key={i} className="flex items-start gap-2 leading-snug" style={{ color: '#444' }}>
                   <span style={{ color: '#e63012', flexShrink: 0, fontWeight: 700 }}>✓</span>
                   {f}
                 </li>
@@ -44,15 +54,20 @@ export default function ProductCard({ name, tagline, features, benefits }: Produ
 
           {benefits && benefits.length > 0 && (
             <div>
-              <h4
-                className="text-[12px] font-black uppercase tracking-widest mb-3"
-                style={{ color: '#e63012' }}
+              <p
+                className="uppercase tracking-widest mb-3"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '12px',
+                  color: '#e63012',
+                }}
               >
                 Beneficios
-              </h4>
+              </p>
               <ul className="space-y-2">
                 {benefits.map((b, i) => (
-                  <li key={i} className="flex items-start gap-2 text-[15px] text-gray-700 font-normal leading-snug">
+                  <li key={i} className="flex items-start gap-2 leading-snug" style={{ color: '#444' }}>
                     <span style={{ color: '#e63012', flexShrink: 0, fontWeight: 700 }}>★</span>
                     {b}
                   </li>

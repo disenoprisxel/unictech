@@ -79,24 +79,24 @@ export default function Navbar() {
               height={64}
               className="object-contain"
             />
-            <div className="leading-tight">
-              <p className="text-white font-black text-[18px] tracking-wider uppercase" style={{ lineHeight: 1.1 }}>
+            <div className="leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
+              <p className="text-white font-black text-[18px] tracking-wider uppercase" style={{ lineHeight: 1.1, fontFamily: "'Roboto', sans-serif" }}>
                 UNICTECH SAS
               </p>
-              <p className="text-white/60 text-[11px] tracking-widest italic font-normal">
+              <p className="text-white/60 text-[11px] tracking-widest italic font-normal" style={{ fontFamily: "'Roboto', sans-serif" }}>
                 Soluciones de confort
               </p>
             </div>
           </Link>
 
-          {/* Desktop nav — bold, 15px, white */}
-          <nav className="hidden xl:flex items-center gap-0.5">
+          {/* Desktop nav — Roboto Bold 15px white */}
+          <nav className="hidden xl:flex items-center gap-0.5" style={{ fontFamily: "'Roboto', sans-serif" }}>
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="px-3 py-2 text-[15px] font-bold transition-colors whitespace-nowrap"
-                style={{ color: pathname === l.href ? '#e63012' : 'white' }}
+                className="px-3 py-2 font-bold transition-colors whitespace-nowrap"
+                style={{ color: pathname === l.href ? '#e63012' : 'white', fontFamily: "'Roboto', sans-serif", fontSize: '15px' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = '#e63012'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = pathname === l.href ? '#e63012' : 'white'; }}
               >
@@ -119,14 +119,14 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {open && (
-          <nav className="xl:hidden px-5 pb-4 flex flex-col" style={{ backgroundColor: 'var(--azul-oscuro)' }}>
+          <nav className="xl:hidden px-5 pb-4 flex flex-col" style={{ backgroundColor: 'var(--azul-oscuro)', fontFamily: "'Roboto', sans-serif" }}>
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="py-3 text-[15px] font-bold border-b border-white/10"
-                style={{ color: pathname === l.href ? '#e63012' : 'white' }}
+                className="py-3 font-bold border-b border-white/10"
+                style={{ color: pathname === l.href ? '#e63012' : 'white', fontFamily: "'Roboto', sans-serif", fontSize: '15px' }}
               >
                 {l.label}
               </Link>
