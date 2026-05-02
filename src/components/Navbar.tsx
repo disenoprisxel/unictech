@@ -70,23 +70,16 @@ export default function Navbar() {
       <div className="w-full" style={{ backgroundColor: 'var(--azul-oscuro)', borderBottom: '4px solid #e63012' }}>
         <div className="w-full px-10 flex items-center justify-between h-[96px]">
 
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+          {/* Logo — imagen completa con ícono + texto */}
+          <Link href="/" className="flex items-center flex-shrink-0">
             <Image
               src="/logo.png"
-              alt="Unictech SAS"
-              width={64}
-              height={64}
+              alt="Unictech SAS – Soluciones de confort"
+              width={220}
+              height={72}
               className="object-contain"
+              priority
             />
-            <div className="leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
-              <p className="text-white font-black text-[18px] tracking-wider uppercase" style={{ lineHeight: 1.1, fontFamily: "'Roboto', sans-serif" }}>
-                UNICTECH SAS
-              </p>
-              <p className="text-white/60 text-[11px] tracking-widest italic font-normal" style={{ fontFamily: "'Roboto', sans-serif" }}>
-                Soluciones de confort
-              </p>
-            </div>
           </Link>
 
           {/* Desktop nav — Roboto Bold 15px white */}

@@ -22,22 +22,14 @@ export default function Footer() {
         {/* Col 1 — Logo + descripción + redes */}
         <div>
           {/* Logo */}
-          <div className="flex items-center gap-3 mb-4">
+          <div className="mb-5">
             <Image
               src="/logo.png"
-              alt="Unictech SAS"
-              width={52}
-              height={52}
+              alt="Unictech SAS – Soluciones de confort"
+              width={200}
+              height={65}
               className="object-contain"
             />
-            <div className="leading-tight">
-              <p className="text-white font-extrabold text-base tracking-wider uppercase" style={{ lineHeight: 1.1 }}>
-                UNICTECH SAS
-              </p>
-              <p className="text-gray-400 text-[11px] italic font-light tracking-wide">
-                Soluciones de confort
-              </p>
-            </div>
           </div>
 
           {/* Descripción */}
