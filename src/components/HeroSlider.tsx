@@ -48,110 +48,61 @@ const slides: SlideData[] = [
   },
 ];
 
-/* ─────────────────────────────────────────────
-   SLIDE CON IMAGEN (layout split + arco dorado)
-
-   Arquitectura de capas (flex row):
-   ┌──────────────────────────────────────────┐
-   │  [LEFT col z:3]  │  [RIGHT col z:1]      │
-   │  Blue bg         │  Photo                │
-   │  (cubre mitad    │                       │
-   │   izq del arco)  │                       │
-   └──────────────────────────────────────────┘
-               ↑ Arco dorado z:2
-            (centrado en la frontera)
-
-   LEFT (z:3) > Arco (z:2) > Photo (z:1)
-   → LEFT tapa la mitad izq del arco
-   → Solo la mitad derecha es visible sobre la foto
-───────────────────────────────────────────── */
+/* ─── Slide con imagen de fondo completa + texto encima ─── */
 function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: boolean }) {
   return (
-    <div
-      className="relative flex-none w-full h-full overflow-hidden flex"
-      style={{ backgroundColor: slide.bg }}
-    >
-      {/* Arco dorado — centrado en la frontera entre columnas */}
-      <div
-        style={{
-          position: 'absolute',
-          width: '720px',
-          height: '720px',
-          backgroundColor: GOLD,
-          borderRadius: '50%',
-          /* "left: 40%" + translateX(-50%) → centro del círculo en el 40% del slide */
-          left: '40%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 2,
-          pointerEvents: 'none',
-          flexShrink: 0,
-        }}
+    <div className="relative flex-none w-full h-full overflow-hidden">
+      {/* Imagen de fondo — cubre todo el slide */}
+      <img
+        src={slide.image}
+        alt={slide.title}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
       />
 
-      {/* Columna IZQUIERDA — z:3 tapa la mitad izq del arco */}
-      <div
-        style={{
-          position: 'relative',
-          width: '44%',
-          flexShrink: 0,
-          backgroundColor: slide.bg,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          paddingLeft: '72px',
-          paddingRight: '16px',
-          zIndex: 3,
-        }}
-      >
-        {/* Título animado — fade-in + slide desde izquierda */}
-        <h1
-          style={{
-            fontFamily: "'Roboto', sans-serif",
-            fontSize: 'clamp(2.2rem, 3.3vw, 3.6rem)',
-            fontWeight: 900,
-            lineHeight: 1.1,
-            color: 'white',
-            marginBottom: '28px',
-            textShadow: '0 2px 14px rgba(0,0,0,0.3)',
-            opacity: isActive ? 1 : 0,
-            transform: isActive ? 'translateX(0px)' : 'translateX(-55px)',
-            transition: 'opacity 0.85s ease-out 0.15s, transform 0.85s ease-out 0.15s',
-          }}
-        >
+      {/* Overlay oscuro para legibilidad del texto */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(21,38,116,0.82) 0%, rgba(21,38,116,0.5) 55%, rgba(0,0,0,0.1) 100%)' }} />
+
+      {/* Texto — izquierda, verticalmente centrado */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        display: 'flex', flexDirection: 'column', justifyContent: 'center',
+        paddingLeft: '72px', paddingRight: '40px',
+        maxWidth: '52%',
+      }}>
+        {/* Título */}
+        <h1 style={{
+          fontFamily: "'Roboto', sans-serif",
+          fontSize: 'clamp(2.4rem, 3.8vw, 4rem)',
+          fontWeight: 900,
+          lineHeight: 1.1,
+          color: 'white',
+          marginBottom: '28px',
+          textShadow: '0 2px 16px rgba(0,0,0,0.4)',
+          opacity: isActive ? 1 : 0,
+          transform: isActive ? 'translateY(0px)' : 'translateY(30px)',
+          transition: 'opacity 0.8s ease-out 0.15s, transform 0.8s ease-out 0.15s',
+        }}>
           {slide.title}
         </h1>
 
-        {/* Bullets — escalonados */}
+        {/* Bullets — aparecen escalonados desde abajo */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
           {slide.bullets.map((b, bi) => (
-            <p
-              key={bi}
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: '14px',
-                fontWeight: 700,
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                color: CYAN,
-                opacity: isActive ? 1 : 0,
-                transform: isActive ? 'translateX(0px)' : 'translateX(-55px)',
-                transition: `opacity 0.7s ease-out ${0.45 + bi * 0.14}s, transform 0.7s ease-out ${0.45 + bi * 0.14}s`,
-              }}
-            >
+            <p key={bi} style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: '14px',
+              fontWeight: 700,
+              letterSpacing: '2.5px',
+              textTransform: 'uppercase',
+              color: CYAN,
+              opacity: isActive ? 1 : 0,
+              transform: isActive ? 'translateY(0px)' : 'translateY(20px)',
+              transition: `opacity 0.6s ease-out ${0.45 + bi * 0.13}s, transform 0.6s ease-out ${0.45 + bi * 0.13}s`,
+            }}>
               {b}
             </p>
           ))}
         </div>
-      </div>
-
-      {/* Columna DERECHA — foto, z:1 (detrás del arco) */}
-      <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
-        <img
-          src={slide.image}
-          alt={slide.title}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-        />
       </div>
     </div>
   );
