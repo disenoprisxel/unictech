@@ -2,7 +2,7 @@
 
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const slides = [
   {
@@ -47,8 +47,19 @@ export default function HeroSlider() {
     Autoplay({ delay: 4000, stopOnInteraction: false }),
   ]);
 
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on('select', onSelect);
+    onSelect();
+    return () => { emblaApi.off('select', onSelect); };
+  }, [emblaApi]);
 
   return (
     <section className="relative overflow-hidden" style={{ height: '580px' }}>
@@ -102,17 +113,34 @@ export default function HeroSlider() {
       <button
         onClick={scrollPrev}
         aria-label="Anterior"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center bg-black/30 hover:bg-black/50 transition-colors text-white"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center bg-black/30 hover:bg-black/50 transition-colors text-white text-2xl"
       >
         ‹
       </button>
       <button
         onClick={scrollNext}
         aria-label="Siguiente"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center bg-black/30 hover:bg-black/50 transition-colors text-white"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center bg-black/30 hover:bg-black/50 transition-colors text-white text-2xl"
       >
         ›
       </button>
+
+      {/* Dot navigation */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => scrollTo(i)}
+            aria-label={`Slide ${i + 1}`}
+            className="transition-all duration-300 rounded-full"
+            style={{
+              width: selectedIndex === i ? '28px' : '10px',
+              height: '10px',
+              backgroundColor: selectedIndex === i ? '#e63012' : 'rgba(255,255,255,0.5)',
+            }}
+          />
+        ))}
+      </div>
     </section>
   );
 }

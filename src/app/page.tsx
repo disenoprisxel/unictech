@@ -129,7 +129,7 @@ export default function Home() {
       {/* ── 3. Trayectoria — fondo oscuro con imagen ── */}
       <section
         className="relative py-24 px-6 text-center text-white"
-        style={{ backgroundColor: '#1a1a1a', backgroundImage: 'url(/lideres.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        style={{ backgroundColor: '#1a1a1a', backgroundImage: 'url(/trayectoria.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.65)' }} />
         <div className="relative z-10 max-w-3xl mx-auto">
