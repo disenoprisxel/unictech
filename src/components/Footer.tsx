@@ -86,7 +86,7 @@ export default function Footer() {
 
         {/* Col 2 — Enlaces */}
         <div>
-          <h3 className="text-white font-bold text-base mb-5">Enlaces</h3>
+          <h3 className="font-bold text-base mb-5" style={{ color: 'white' }}>Enlaces</h3>
           <ul className="space-y-2.5">
             {enlaces.map((l) => (
               <li key={l.href}>
@@ -104,7 +104,7 @@ export default function Footer() {
 
         {/* Col 3 — Contáctanos */}
         <div>
-          <h3 className="text-white font-bold text-base mb-5">Contáctanos</h3>
+          <h3 className="font-bold text-base mb-5" style={{ color: 'white' }}>Contáctanos</h3>
           <ul className="space-y-2.5 text-sm" style={{ color: '#888' }}>
             <li>AV. Calle 100 # 60-04</li>
             <li>

@@ -1,47 +1,58 @@
 import HeroSlider from '@/components/HeroSlider';
 import MarcasCarousel from '@/components/MarcasCarousel';
-import Image from 'next/image';
 import Link from 'next/link';
 
 const ACCENT = '#e63012';
 
-/* ── íconos Prácticas — SVG idénticos al screenshot ── */
-const IconMovers = () => (
-  <svg viewBox="0 0 80 80" fill={ACCENT} width="72" height="72">
-    <path d="M26 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm28 0a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM14 36l8-8 6 6 8-8 6 6 8-8 8 8v6H14v-6zm0 10h52v4H14v-4zm4 8h44l-4 12H22l-4-12z"/>
+/* ── íconos Prácticas — rediseñados profesionales ── */
+
+/* 1 · Casco / técnico certificado → Personal altamente calificado */
+const IconQualified = () => (
+  <svg viewBox="0 0 80 80" width="72" height="72" fill={ACCENT}>
+    {/* Cabeza */}
+    <circle cx="30" cy="26" r="14" />
+    {/* Cuerpo */}
+    <path d="M4 72c0-14 12-23 26-23s26 9 26 23H4z" />
+    {/* Estrella de certificación */}
+    <path d="M66 10l3 6.5 7.2 1-5.3 5.1 1.3 7.2-6.2-3.3-6.3 3.3 1.3-7.2-5.3-5.1 7.3-1z" />
   </svg>
 );
 
-const IconDoubleCheck = () => (
-  <svg viewBox="0 0 80 80" fill={ACCENT} width="72" height="72">
-    <path d="M56 20L34 52 22 40l-6 6 18 18 28-38-6-6zM44 46l-6 6-6-6-6 6 12 12 18-24-6-6-6 12z"/>
+/* 2 · Llama → Soluciones de confort / calefacción */
+const IconFlame = () => (
+  <svg viewBox="0 0 80 80" width="72" height="72" fill={ACCENT}>
+    <path d="M40 4c-2 9-9 16-9 25 0 4 1 7 1 7s-6-4-6-13c-9 9-13 20-13 29 0 17 12 24 27 24s27-7 27-24c0-11-5-22-11-32-4 7-5 14-5 14S42 20 40 4z" />
   </svg>
 );
 
-const IconHandshake = () => (
-  <svg viewBox="0 0 80 80" fill={ACCENT} width="72" height="72">
-    <path d="M46 28h-6l-8 8H20l-8-4v24l8-4h8l18 10 18-10V28l-10 4-8-4zm-2 26l-16-9H20v-14h8l8-8h4l12 6 6-2v16l-14 11z"/>
+/* 3 · Rayo → Alta eficiencia energética */
+const IconZap = () => (
+  <svg viewBox="0 0 80 80" width="72" height="72" fill={ACCENT}>
+    <path d="M50 4L16 46h26L28 76 64 34H38z" />
   </svg>
 );
 
-const IconClipboard = () => (
-  <svg viewBox="0 0 80 80" fill={ACCENT} width="72" height="72">
-    <path d="M52 8h-8a4 4 0 0 0-8 0h-8a4 4 0 0 0-4 4v52a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V12a4 4 0 0 0-4-4zm-12 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm12 52H28V16h4v4h16v-4h4v48zM52 36l-16 16-8-8-4 4 12 12 20-20-4-4z"/>
+/* 4 · Escudo con check → Materiales certificados */
+const IconShieldCheck = () => (
+  <svg viewBox="0 0 80 80" width="72" height="72" fill={ACCENT}>
+    <path d="M40 4L8 18v24c0 18 14 33 32 38 18-5 32-20 32-38V18L40 4z" />
+    <path d="M27 42l10 10 20-20-4-4-16 16-6-6z" fill="white" />
   </svg>
 );
 
-const IconTree = () => (
-  <svg viewBox="0 0 80 80" fill={ACCENT} width="72" height="72">
-    <path d="M40 6L20 30h12L18 52h14v14h16V52h14L48 30h12L40 6zm0 12l10 14h-7l14 20H30l14-20h-7L40 18z"/>
+/* 5 · Hoja → Compromiso ambiental */
+const IconLeaf = () => (
+  <svg viewBox="0 0 80 80" width="72" height="72" fill={ACCENT}>
+    <path d="M68 8C44 8 14 18 10 58c8-12 22-18 36-18-18 8-28 22-28 36h10c4-22 18-36 40-42V8z" />
   </svg>
 );
 
 const practicas = [
-  { label: 'Personal altamente calificado', Icon: IconMovers },
-  { label: 'Soluciones integrales y de confort', Icon: IconDoubleCheck },
-  { label: 'Comercializamos equipos de alta eficiencia', Icon: IconHandshake },
-  { label: 'Materiales certificados y de alta resistencia', Icon: IconClipboard },
-  { label: 'Comprometidos con el medio ambiente', Icon: IconTree },
+  { label: 'Personal altamente calificado', Icon: IconQualified },
+  { label: 'Soluciones integrales y de confort', Icon: IconFlame },
+  { label: 'Comercializamos equipos de alta eficiencia', Icon: IconZap },
+  { label: 'Materiales certificados y de alta resistencia', Icon: IconShieldCheck },
+  { label: 'Comprometidos con el medio ambiente', Icon: IconLeaf },
 ];
 
 export default function Home() {
@@ -66,17 +77,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 2. ¿Quiénes Somos? con imagen real ── */}
+      {/* ── 2. ¿Quiénes Somos? con imagen completa ── */}
       <section className="py-16 px-6" style={{ backgroundColor: '#f0f0f0' }}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
-          {/* Imagen real Lideres.jpg */}
-          <div className="relative rounded-lg overflow-hidden shadow-lg" style={{ aspectRatio: '4/3' }}>
-            <Image
+          {/* Imagen real — visible completa, sin recorte */}
+          <div className="rounded-lg overflow-hidden shadow-lg">
+            <img
               src="/lideres.jpg"
               alt="Calefacción Infrarroja — El Confort que Mereces"
-              fill
-              className="object-cover"
+              className="w-full h-auto block"
             />
           </div>
 
@@ -126,15 +136,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 3. Trayectoria — fondo oscuro con imagen ── */}
+      {/* ── 3. Trayectoria — nueva foto de fondo ── */}
       <section
-        className="relative py-24 px-6 text-center text-white"
-        style={{ backgroundColor: '#1a1a1a', backgroundImage: 'url(/trayectoria.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        className="relative py-24 px-6 text-center"
+        style={{ backgroundImage: 'url(/trayectoria.jpg)', backgroundSize: 'cover', backgroundPosition: 'center top' }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.65)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.68)' }} />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="font-bold text-white mb-6">Trayectoria</h2>
-          <p className="text-white/90 leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <h2 className="font-bold mb-6" style={{ color: 'white' }}>Trayectoria</h2>
+          <p className="leading-relaxed" style={{ color: 'white', fontFamily: "'Montserrat', sans-serif" }}>
             UNICTECH SAS se destaca por su compromiso, responsabilidad, mejora continua en las prácticas
             empresariales, medio ambientales y sostenibles que garanticen la ejecución completa y
             satisfactoria de los proyectos.
@@ -142,20 +152,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4. Prácticas — íconos grandes, idéntico al original ── */}
+      {/* ── 4. Prácticas ── */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-bold text-gray-900 text-center mb-12">Prácticas</h2>
+          <p
+            className="text-center mb-2 uppercase tracking-[4px]"
+            style={{ color: ACCENT, fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: '13px' }}
+          >
+            LO QUE NOS DEFINE
+          </p>
+          <h2
+            className="font-bold text-gray-900 text-center mb-12"
+            style={{ fontSize: '26px', letterSpacing: '1px' }}
+          >
+            Prácticas
+          </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
             {practicas.map(({ label, Icon }, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center text-center border border-gray-200 rounded-lg pt-10 pb-8 px-4"
+                className="flex flex-col items-center text-center border border-gray-200 rounded-lg pt-10 pb-8 px-4 hover:shadow-md transition-shadow"
               >
-                <div className="mb-8">
+                <div className="mb-7">
                   <Icon />
                 </div>
-                <p className="font-bold text-gray-800 leading-snug" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px' }}>
+                <p className="font-bold text-gray-800 leading-snug" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '17px' }}>
                   {label}
                 </p>
               </div>
@@ -164,32 +185,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 5. Marcas Aliadas — carrusel centrado ── */}
+      {/* ── 5. Marcas Aliadas ── */}
       <section className="py-14 px-6" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="max-w-4xl mx-auto">
           <p className="text-[13px] font-bold uppercase tracking-[3px] mb-3 text-center" style={{ color: ACCENT, fontFamily: "'Montserrat', sans-serif" }}>
             MARCAS ALIADAS
           </p>
-          <h2 className="font-bold text-gray-900 mb-10 text-center uppercase tracking-wide">
+          <p
+            className="text-gray-900 mb-10 text-center uppercase tracking-widest font-bold"
+            style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '18px' }}
+          >
             Trabajamos con las mejores marcas
-          </h2>
+          </p>
           <MarcasCarousel />
         </div>
       </section>
 
-      {/* ── 6. CTA final ── */}
-      <section className="py-14 px-6 text-center text-white" style={{ backgroundColor: ACCENT }}>
-        <h2 className="font-bold text-white mb-3">¿Listo para tu proyecto?</h2>
-        <p className="mb-6 text-white/90" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-          Contáctanos y nuestro equipo te asesorará sin costo.
-        </p>
-        <Link
-          href="/contacto"
-          className="inline-block px-8 py-3 rounded font-bold uppercase tracking-wide text-white border-2 border-white transition-colors hover:bg-white hover:text-[#e63012]"
-          style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px' }}
-        >
-          Solicitar Asesoría
-        </Link>
+      {/* ── 6. CTA final — azul profesional ── */}
+      <section
+        className="relative py-20 px-6 text-center overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #0d1b4b 0%, #152674 60%, #1a3080 100%)' }}
+      >
+        {/* Línea de acento superior */}
+        <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: ACCENT }} />
+
+        {/* Círculos decorativos sutiles */}
+        <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full opacity-5 bg-white" />
+        <div className="absolute -left-10 -bottom-10 w-56 h-56 rounded-full opacity-5 bg-white" />
+
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <p className="text-[13px] font-bold uppercase tracking-[4px] mb-4" style={{ color: ACCENT, fontFamily: "'Montserrat', sans-serif" }}>
+            CONTACTO
+          </p>
+          <h2 className="font-bold mb-4" style={{ color: 'white', fontSize: '38px' }}>
+            ¿Listo para tu proyecto?
+          </h2>
+          <p className="mb-8" style={{ color: 'rgba(255,255,255,0.75)', fontFamily: "'Montserrat', sans-serif", fontSize: '16px' }}>
+            Contáctanos y nuestro equipo te asesorará sin costo.
+          </p>
+          <Link
+            href="/contacto"
+            className="inline-block px-10 py-4 font-bold uppercase border-2 border-white text-white rounded hover:bg-white transition-all duration-300"
+            style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', letterSpacing: '2px' }}
+          >
+            Solicitar Asesoría
+          </Link>
+        </div>
       </section>
     </>
   );

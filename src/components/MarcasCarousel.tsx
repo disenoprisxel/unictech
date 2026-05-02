@@ -32,7 +32,7 @@ export default function MarcasCarousel() {
               alt={m.alt}
               width={150}
               height={70}
-              className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              className="object-contain transition-all duration-300"
               style={{ maxHeight: '70px', width: 'auto' }}
             />
           </div>
