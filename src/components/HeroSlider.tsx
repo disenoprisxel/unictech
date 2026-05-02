@@ -23,13 +23,14 @@ const slides: SlideData[] = [
   {
     id: 1, bg: BLUE, layout: 'image',
     image: '/slide-1.jpg',
-    title: 'Sistema de Colectores Solares',
+    title: 'Sistema de\nColectores\nSolares',
     bullets: ['ENERGÍAS RENOVABLES', 'EFICIENCIA ENERGÉTICA', 'BAJO IMPACTO AMBIENTAL'],
   },
   {
-    id: 2, bg: '#0f2060', layout: 'color',
-    tag: 'CLIMATIZACIÓN', title: 'PISCINAS',
-    body: 'Climatización de piscinas y jacuzzis',
+    id: 2, bg: '#0f2060', layout: 'image',
+    image: '/slide-2.jpg',
+    title: 'PISCINAS',
+    bullets: ['CLIMATIZACIÓN', 'CLIMATIZACIÓN DE PISCINAS Y JACUZZIS'],
   },
   {
     id: 3, bg: BLUE, layout: 'color',
@@ -69,28 +70,30 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
         paddingLeft: '72px', paddingRight: '40px',
         maxWidth: '52%',
       }}>
-        {/* Título */}
+        {/* Título — soporta \n como salto de línea forzado */}
         <h1 style={{
           fontFamily: "'Roboto', sans-serif",
-          fontSize: 'clamp(2.4rem, 3.8vw, 4rem)',
+          fontSize: 'clamp(3rem, 4.8vw, 5rem)',
           fontWeight: 900,
-          lineHeight: 1.1,
+          lineHeight: 1.08,
           color: 'white',
-          marginBottom: '28px',
-          textShadow: '0 2px 16px rgba(0,0,0,0.4)',
+          marginBottom: '32px',
+          textShadow: '0 2px 18px rgba(0,0,0,0.45)',
           opacity: isActive ? 1 : 0,
           transform: isActive ? 'translateY(0px)' : 'translateY(30px)',
           transition: 'opacity 0.8s ease-out 0.15s, transform 0.8s ease-out 0.15s',
         }}>
-          {slide.title}
+          {slide.title.split('\n').map((line, li) => (
+            <span key={li} style={{ display: 'block' }}>{line}</span>
+          ))}
         </h1>
 
-        {/* Bullets — aparecen escalonados desde abajo */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
+        {/* Bullets — escalonados desde abajo */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
           {slide.bullets.map((b, bi) => (
             <p key={bi} style={{
               fontFamily: "'Montserrat', sans-serif",
-              fontSize: '14px',
+              fontSize: '18px',
               fontWeight: 700,
               letterSpacing: '2.5px',
               textTransform: 'uppercase',
