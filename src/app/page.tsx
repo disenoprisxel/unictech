@@ -139,7 +139,7 @@ export default function Home() {
       {/* ── 3. Trayectoria — nueva foto de fondo ── */}
       <section
         className="relative py-24 px-6 text-center"
-        style={{ backgroundImage: 'url(/trayectoria.jpg)', backgroundSize: 'cover', backgroundPosition: 'center top' }}
+        style={{ backgroundImage: 'url(/trayectoria.jpg)', backgroundSize: 'cover', backgroundPosition: 'center center' }}
       >
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.68)' }} />
         <div className="relative z-10 max-w-3xl mx-auto">
