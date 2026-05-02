@@ -1,5 +1,6 @@
 import HeroSlider from '@/components/HeroSlider';
 import MarcasCarousel from '@/components/MarcasCarousel';
+import StatsSection from '@/components/StatsSection';
 import Link from 'next/link';
 
 const ACCENT = '#e63012';
@@ -201,7 +202,86 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 6. CTA final — azul profesional ── */}
+      {/* ── 6. Estadísticas ── */}
+      <StatsSection />
+
+      {/* ── 7. Testimonios curados ── */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[13px] font-bold uppercase tracking-[3px] mb-3 text-center"
+            style={{ color: '#e63012', fontFamily: "'Montserrat', sans-serif" }}>
+            TESTIMONIOS
+          </p>
+          <h2 className="font-bold text-gray-900 text-center mb-12" style={{ fontSize: '32px' }}>
+            Lo que dicen nuestros clientes
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                quote: 'El sistema de calefacción infrarroja que instalaron en nuestra terraza transformó por completo el espacio. Profesionales, puntuales y el resultado superó todas las expectativas.',
+                name: 'Carlos M.',
+                location: 'Bogotá',
+                project: 'Proyecto Residencial',
+                initials: 'CM',
+              },
+              {
+                quote: 'Instalaron el sistema de agua caliente en nuestro local comercial con eficiencia impresionante. El equipo es serio, responsable y cumplió con los tiempos acordados.',
+                name: 'Laura V.',
+                location: 'Cundinamarca',
+                project: 'Proyecto Comercial',
+                initials: 'LV',
+              },
+              {
+                quote: 'Muy satisfechos con la calefacción de nuestra piscina. El proceso fue claro desde el inicio, usaron materiales de primera y el sistema funciona perfecto.',
+                name: 'Ricardo S.',
+                location: 'Bogotá',
+                project: 'Calentamiento de Piscina',
+                initials: 'RS',
+              },
+            ].map((t, i) => (
+              <div key={i}
+                className="bg-white rounded-xl border border-gray-100 shadow-sm p-8 flex flex-col hover:shadow-md transition-shadow">
+                {/* Comilla decorativa */}
+                <div className="text-6xl leading-none mb-3 font-serif select-none"
+                  style={{ color: '#e63012', opacity: 0.15, fontFamily: 'Georgia, serif', lineHeight: '1' }}>
+                  ❝
+                </div>
+                {/* Estrellas */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, s) => (
+                    <svg key={s} viewBox="0 0 20 20" width="17" height="17" fill="#f59e0b">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                </div>
+                {/* Texto */}
+                <p className="text-gray-600 leading-relaxed flex-1 mb-6"
+                  style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px' }}>
+                  "{t.quote}"
+                </p>
+                {/* Autor */}
+                <div className="border-t border-gray-100 pt-5 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-white text-sm"
+                    style={{ backgroundColor: '#e63012', fontFamily: "'Roboto', sans-serif" }}>
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-900"
+                      style={{ fontFamily: "'Roboto', sans-serif", fontSize: '15px' }}>
+                      {t.name}
+                    </p>
+                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#888' }}>
+                      {t.location} · {t.project}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 8. CTA final — azul profesional ── */}
       <section
         className="relative py-20 px-6 text-center overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #0d1b4b 0%, #152674 60%, #1a3080 100%)' }}
