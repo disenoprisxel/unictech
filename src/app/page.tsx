@@ -154,17 +154,11 @@ export default function Home() {
       </section>
 
       {/* ── 4. Prácticas ── */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <p
-            className="text-center mb-2 uppercase tracking-[4px]"
-            style={{ color: ACCENT, fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: '13px' }}
-          >
-            LO QUE NOS DEFINE
-          </p>
           <h2
-            className="font-bold text-gray-900 text-center mb-12"
-            style={{ fontSize: '26px', letterSpacing: '1px' }}
+            className="font-bold text-gray-900 text-center mb-14"
+            style={{ fontFamily: "'Roboto', sans-serif", fontSize: '40px' }}
           >
             Prácticas
           </h2>
@@ -177,7 +171,7 @@ export default function Home() {
                 <div className="mb-7">
                   <Icon />
                 </div>
-                <p className="font-bold text-gray-800 leading-snug" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '17px' }}>
+                <p className="font-bold text-gray-800 leading-snug" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '16px' }}>
                   {label}
                 </p>
               </div>
@@ -187,17 +181,14 @@ export default function Home() {
       </section>
 
       {/* ── 5. Marcas Aliadas ── */}
-      <section className="py-14 px-6" style={{ backgroundColor: '#f5f5f5' }}>
-        <div className="max-w-4xl mx-auto">
-          <p className="text-[13px] font-bold uppercase tracking-[3px] mb-3 text-center" style={{ color: ACCENT, fontFamily: "'Montserrat', sans-serif" }}>
-            MARCAS ALIADAS
-          </p>
-          <p
-            className="text-gray-900 mb-10 text-center uppercase tracking-widest font-bold"
-            style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '18px' }}
+      <section className="py-20 px-6" style={{ backgroundColor: '#f5f5f5' }}>
+        <div className="max-w-5xl mx-auto">
+          <h2
+            className="font-bold text-gray-900 text-center mb-12"
+            style={{ fontFamily: "'Roboto', sans-serif", fontSize: '36px' }}
           >
-            Trabajamos con las mejores marcas
-          </p>
+            Marcas Aliadas
+          </h2>
           <MarcasCarousel />
         </div>
       </section>

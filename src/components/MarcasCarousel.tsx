@@ -24,16 +24,16 @@ export default function MarcasCarousel() {
         {[...marcas, ...marcas].map((m, i) => (
           <div
             key={i}
-            className="flex-none flex items-center justify-center px-10"
-            style={{ minWidth: '200px' }}
+            className="flex-none flex items-center justify-center px-14"
+            style={{ minWidth: '260px' }}
           >
             <Image
               src={m.src}
               alt={m.alt}
-              width={150}
-              height={70}
+              width={200}
+              height={100}
               className="object-contain transition-all duration-300"
-              style={{ maxHeight: '70px', width: 'auto' }}
+              style={{ maxHeight: '100px', width: 'auto' }}
             />
           </div>
         ))}
