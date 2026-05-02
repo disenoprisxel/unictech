@@ -33,19 +33,22 @@ const slides: SlideData[] = [
     bullets: ['CLIMATIZACIÓN', 'CLIMATIZACIÓN DE PISCINAS Y JACUZZIS'],
   },
   {
-    id: 3, bg: BLUE, layout: 'color',
-    tag: 'CUIDADOS QUE MERECES', title: 'AGUA CALIENTE',
-    body: 'Sistemas de alta eficiencia para tu hogar',
+    id: 3, bg: BLUE, layout: 'image',
+    image: '/slide-3.jpg',
+    title: 'AGUA CALIENTE',
+    bullets: ['CUIDADOS QUE MERECES', 'SISTEMAS DE ALTA EFICIENCIA PARA TU HOGAR'],
   },
   {
-    id: 4, bg: '#1a3080', layout: 'color',
-    tag: 'TU MEJOR ELECCIÓN', title: 'SISTEMAS DE CALEFACCIÓN',
-    body: 'Disfruta del calor del hogar',
+    id: 4, bg: '#1a3080', layout: 'image',
+    image: '/slide-4.jpg',
+    title: 'SISTEMAS DE\nCALEFACCIÓN',
+    bullets: ['TU MEJOR ELECCIÓN', 'DISFRUTA DEL CALOR DEL HOGAR'],
   },
   {
-    id: 5, bg: '#0f2060', layout: 'color',
-    tag: 'CONFORT QUE MERECES', title: 'CHIMENEAS',
-    body: 'Ambientando los momentos',
+    id: 5, bg: '#0f2060', layout: 'image',
+    image: '/slide-5.jpg',
+    title: 'CHIMENEAS',
+    bullets: ['CONFORT QUE MERECES', 'AMBIENTANDO LOS MOMENTOS'],
   },
 ];
 
