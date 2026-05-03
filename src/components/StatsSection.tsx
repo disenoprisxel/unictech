@@ -55,10 +55,10 @@ const IconBrands = () => (
 );
 
 const stats = [
-  { value: 15, suffix: '+', label: 'Años en el mercado',    Icon: IconTrophy   },
-  { value: 200, suffix: '+', label: 'Proyectos ejecutados', Icon: IconProjects  },
-  { value: 500, suffix: '+', label: 'Clientes satisfechos', Icon: IconClients   },
-  { value: 4,   suffix: '',  label: 'Marcas líderes',       Icon: IconBrands    },
+  { value: 10,  suffix: '+', label: 'Años en el mercado',    Icon: IconTrophy   },
+  { value: 60,  suffix: '+', label: 'Proyectos ejecutados',  Icon: IconProjects  },
+  { value: 120, suffix: '+', label: 'Clientes satisfechos',  Icon: IconClients   },
+  { value: 4,   suffix: '',  label: 'Marcas líderes',        Icon: IconBrands    },
 ];
 
 function StatCard({ value, suffix, label, Icon, started }: {
