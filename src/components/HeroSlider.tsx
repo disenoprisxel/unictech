@@ -14,9 +14,10 @@ type ImageSlideData = {
   image: string; title: string; bullets: string[];
   titleColor?: string;
   textSide?: 'left' | 'right';
-  textVAlign?: 'center' | 'top';
+  textVAlign?: 'center' | 'top' | 'bottom';
   bulletColor?: string;  // default: CYAN
   bulletSize?: string;   // default: '18px'
+  bulletGap?: string;    // default: '11px'
 };
 type ColorSlideData = {
   id: number; bg: string; layout: 'color';
@@ -46,52 +47,75 @@ const slides: SlideData[] = [
     id: 3, bg: BLUE, layout: 'image',
     image: '/slide-3.jpg',
     title: 'AGUA CALIENTE',
+    titleColor: GOLD,
+    textSide: 'right',
+    textVAlign: 'bottom',
     bullets: ['CUIDADOS QUE MERECES', 'SISTEMAS DE ALTA EFICIENCIA PARA TU HOGAR'],
+    bulletColor: BLUE,
+    bulletSize: '20px',
   },
   {
     id: 4, bg: '#1a3080', layout: 'image',
     image: '/slide-4.jpg',
     title: 'SISTEMAS DE\nCALEFACCIÓN',
     bullets: ['TU MEJOR ELECCIÓN', 'DISFRUTA DEL CALOR DEL HOGAR'],
+    bulletColor: GOLD,
+    bulletGap: '4px',
   },
   {
     id: 5, bg: '#0f2060', layout: 'image',
     image: '/slide-5.jpg',
     title: 'CHIMENEAS',
+    titleColor: 'white',
+    textSide: 'right',
+    textVAlign: 'bottom',
     bullets: ['CONFORT QUE MERECES', 'AMBIENTANDO LOS MOMENTOS'],
+    bulletColor: BLUE,
+    bulletSize: '20px',
   },
 ];
 
-/* ─── Slide con imagen de fondo + texto flexible (izq/der, arriba/centro) ─── */
+/* ─── Slide con imagen de fondo + texto flexible ─── */
 function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: boolean }) {
   const isRight  = slide.textSide === 'right';
   const isTop    = slide.textVAlign === 'top';
+  const isBottom = slide.textVAlign === 'bottom';
   const titleCol = slide.titleColor ?? 'white';
-
 
   /* Contenedor de texto */
   const textBox: CSSProperties = isRight
-    ? {
-        position: 'absolute',
-        top: isTop ? '70px' : '50%',
-        transform: isTop ? 'none' : 'translateY(-50%)',
-        right: '10%',
-        maxWidth: '46%',
-        textAlign: 'right',
-      }
-    : {
+    ? isBottom
+      ? {                                   /* derecha + abajo */
+          position: 'absolute',
+          bottom: '60px',
+          right: '10%',
+          maxWidth: '46%',
+          textAlign: 'right',
+        }
+      : {                                   /* derecha + arriba / centro */
+          position: 'absolute',
+          top: isTop ? '70px' : '50%',
+          transform: isTop ? 'none' : 'translateY(-50%)',
+          right: '10%',
+          maxWidth: '46%',
+          textAlign: 'right',
+        }
+    : {                                     /* izquierda */
         position: 'absolute',
         top: 0, bottom: 0, left: 0,
         display: 'flex', flexDirection: 'column',
-        justifyContent: isTop ? 'flex-start' : 'center',
-        paddingTop: isTop ? '70px' : undefined,
+        justifyContent: isBottom ? 'flex-end' : isTop ? 'flex-start' : 'center',
+        paddingTop:    isTop    ? '70px'  : undefined,
+        paddingBottom: isBottom ? '60px'  : undefined,
         paddingLeft: '10%',
         paddingRight: '40px',
         maxWidth: '52%',
       };
 
   /* Dirección de la animación según posición */
-  const fromTransform = isRight ? 'translateY(-24px)' : 'translateY(30px)';
+  const fromTransform = isRight
+    ? (isBottom ? 'translateY(24px)' : 'translateY(-24px)')
+    : 'translateY(30px)';
 
   return (
     <div className="relative flex-none w-full h-full overflow-hidden">
@@ -108,8 +132,7 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
           fontWeight: 900,
           lineHeight: 1.08,
           color: titleCol,
-          marginBottom: '28px',
-          textShadow: '0 2px 18px rgba(0,0,0,0.4)',
+          marginBottom: '20px',
           opacity: isActive ? 1 : 0,
           transform: isActive ? 'translateY(0)' : fromTransform,
           transition: 'opacity 0.8s ease-out 0.15s, transform 0.8s ease-out 0.15s',
@@ -120,7 +143,7 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
         </h1>
 
         {/* Bullets */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: slide.bulletGap ?? '11px' }}>
           {slide.bullets.map((b, bi) => (
             <p key={bi} style={{
               fontFamily: "'Montserrat', sans-serif",
@@ -157,7 +180,7 @@ function ColorSlide({ slide }: { slide: ColorSlideData }) {
         <h1 style={{
           color: GOLD, fontFamily: "'Roboto',sans-serif", fontWeight: 900,
           fontSize: 'clamp(2.5rem,8vw,5.5rem)', lineHeight: 1,
-          letterSpacing: '2px', textShadow: '0 2px 12px rgba(0,0,0,0.4)',
+          letterSpacing: '2px',
           textTransform: 'uppercase', marginBottom: '24px',
         }}>
           {slide.title}
