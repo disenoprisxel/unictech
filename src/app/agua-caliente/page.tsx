@@ -107,12 +107,9 @@ export default function AguaCaliente() {
             </div>
 
             {/* Imagen */}
-            <div style={{ backgroundColor: '#22b8cc', borderRadius: '4px',
-              minHeight: '420px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: "'Montserrat',sans-serif",
-                fontSize: '13px', letterSpacing: '2px' }}>
-                IMAGEN PRODUCTO
-              </p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src="/producto-calentador-bosch.jpg" alt="Calentador de Paso Bosch"
+                style={{ width: '100%', maxWidth: '480px', height: 'auto', display: 'block', borderRadius: '4px' }} />
             </div>
           </div>
         </section>
@@ -143,12 +140,9 @@ export default function AguaCaliente() {
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* Imagen a la izquierda */}
-            <div style={{ backgroundColor: '#2e7d32', borderRadius: '4px',
-              minHeight: '420px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: "'Montserrat',sans-serif",
-                fontSize: '13px', letterSpacing: '2px' }}>
-                IMAGEN PRODUCTO
-              </p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src="/producto-caldera-therm.jpg" alt="Caldera de Alta Eficiencia Therm 8000 Bosch"
+                style={{ width: '100%', maxWidth: '480px', height: 'auto', display: 'block', borderRadius: '4px' }} />
             </div>
 
             {/* Texto */}
