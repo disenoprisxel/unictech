@@ -2,7 +2,7 @@
 
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, CSSProperties } from 'react';
 
 const GOLD   = '#db9600';
 const BLUE   = '#152674';
@@ -12,6 +12,9 @@ const ACCENT = '#e63012';
 type ImageSlideData = {
   id: number; bg: string; layout: 'image';
   image: string; title: string; bullets: string[];
+  titleColor?: string;           // default: 'white'
+  textSide?: 'left' | 'right';  // default: 'left'
+  textVAlign?: 'center' | 'top'; // default: 'center'
 };
 type ColorSlideData = {
   id: number; bg: string; layout: 'color';
@@ -30,6 +33,9 @@ const slides: SlideData[] = [
     id: 2, bg: '#0f2060', layout: 'image',
     image: '/slide-2.jpg',
     title: 'PISCINAS',
+    titleColor: GOLD,
+    textSide: 'right',
+    textVAlign: 'top',
     bullets: ['CLIMATIZACIÓN', 'CLIMATIZACIÓN DE PISCINAS Y JACUZZIS'],
   },
   {
@@ -52,38 +58,63 @@ const slides: SlideData[] = [
   },
 ];
 
-/* ─── Slide con imagen de fondo completa + texto encima ─── */
+/* ─── Slide con imagen de fondo + texto flexible (izq/der, arriba/centro) ─── */
 function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: boolean }) {
+  const isRight  = slide.textSide === 'right';
+  const isTop    = slide.textVAlign === 'top';
+  const titleCol = slide.titleColor ?? 'white';
+
+  /* Gradiente de legibilidad: desde el lado donde está el texto */
+  const overlay = isRight
+    ? 'linear-gradient(270deg, rgba(15,32,96,0.88) 0%, rgba(15,32,96,0.55) 50%, rgba(0,0,0,0.05) 100%)'
+    : 'linear-gradient(90deg,  rgba(21,38,116,0.82) 0%, rgba(21,38,116,0.50) 55%, rgba(0,0,0,0.10) 100%)';
+
+  /* Contenedor de texto */
+  const textBox: CSSProperties = isRight
+    ? {
+        position: 'absolute',
+        top: isTop ? '70px' : '50%',
+        transform: isTop ? 'none' : 'translateY(-50%)',
+        right: '72px',
+        maxWidth: '46%',
+        textAlign: 'right',
+      }
+    : {
+        position: 'absolute',
+        top: 0, bottom: 0, left: 0,
+        display: 'flex', flexDirection: 'column',
+        justifyContent: isTop ? 'flex-start' : 'center',
+        paddingTop: isTop ? '70px' : undefined,
+        paddingLeft: '72px',
+        paddingRight: '40px',
+        maxWidth: '52%',
+      };
+
+  /* Dirección de la animación según posición */
+  const fromTransform = isRight ? 'translateY(-24px)' : 'translateY(30px)';
+
   return (
     <div className="relative flex-none w-full h-full overflow-hidden">
-      {/* Imagen de fondo — cubre todo el slide */}
-      <img
-        src={slide.image}
-        alt={slide.title}
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-      />
+      {/* Imagen de fondo */}
+      <img src={slide.image} alt={slide.title}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
 
-      {/* Overlay oscuro para legibilidad del texto */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(21,38,116,0.82) 0%, rgba(21,38,116,0.5) 55%, rgba(0,0,0,0.1) 100%)' }} />
+      {/* Overlay de legibilidad */}
+      <div style={{ position: 'absolute', inset: 0, background: overlay }} />
 
-      {/* Texto — izquierda, verticalmente centrado */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        paddingLeft: '72px', paddingRight: '40px',
-        maxWidth: '52%',
-      }}>
-        {/* Título — soporta \n como salto de línea forzado */}
+      {/* Bloque de texto */}
+      <div style={textBox}>
+        {/* Título */}
         <h1 style={{
           fontFamily: "'Roboto', sans-serif",
           fontSize: 'clamp(3rem, 4.8vw, 5rem)',
           fontWeight: 900,
           lineHeight: 1.08,
-          color: 'white',
-          marginBottom: '32px',
-          textShadow: '0 2px 18px rgba(0,0,0,0.45)',
+          color: titleCol,
+          marginBottom: '28px',
+          textShadow: '0 2px 18px rgba(0,0,0,0.4)',
           opacity: isActive ? 1 : 0,
-          transform: isActive ? 'translateY(0px)' : 'translateY(30px)',
+          transform: isActive ? 'translateY(0)' : fromTransform,
           transition: 'opacity 0.8s ease-out 0.15s, transform 0.8s ease-out 0.15s',
         }}>
           {slide.title.split('\n').map((line, li) => (
@@ -91,7 +122,7 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
           ))}
         </h1>
 
-        {/* Bullets — escalonados desde abajo */}
+        {/* Bullets */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
           {slide.bullets.map((b, bi) => (
             <p key={bi} style={{
@@ -102,7 +133,7 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
               textTransform: 'uppercase',
               color: CYAN,
               opacity: isActive ? 1 : 0,
-              transform: isActive ? 'translateY(0px)' : 'translateY(20px)',
+              transform: isActive ? 'translateY(0)' : fromTransform,
               transition: `opacity 0.6s ease-out ${0.45 + bi * 0.13}s, transform 0.6s ease-out ${0.45 + bi * 0.13}s`,
             }}>
               {b}
@@ -117,14 +148,10 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
 /* ─── Slide de color sólido ─── */
 function ColorSlide({ slide }: { slide: ColorSlideData }) {
   return (
-    <div
-      className="relative flex-none w-full h-full flex flex-col items-center justify-center text-center px-6"
-      style={{ backgroundColor: slide.bg }}
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(135deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 60%)' }}
-      />
+    <div className="relative flex-none w-full h-full flex flex-col items-center justify-center text-center px-6"
+      style={{ backgroundColor: slide.bg }}>
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: 'linear-gradient(135deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 60%)' }} />
       <div className="relative z-10 max-w-3xl">
         <p style={{ color: CYAN, fontFamily: "'Montserrat',sans-serif", fontWeight: 700,
           fontSize: '13px', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '16px' }}>
@@ -138,8 +165,7 @@ function ColorSlide({ slide }: { slide: ColorSlideData }) {
         }}>
           {slide.title}
         </h1>
-        <p style={{ color: 'white', fontFamily: "'Montserrat',sans-serif",
-          fontWeight: 600, fontSize: '18px', opacity: 0.9 }}>
+        <p style={{ color: 'white', fontFamily: "'Montserrat',sans-serif", fontWeight: 600, fontSize: '18px', opacity: 0.9 }}>
           {slide.body}
         </p>
       </div>
@@ -155,8 +181,6 @@ export default function HeroSlider() {
   );
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  /* 'ready' se activa 130ms después del mount para que el navegador
-     pinte el estado inicial (opacity:0) antes de animar */
   const [ready, setReady] = useState(false);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
