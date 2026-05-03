@@ -14,6 +14,45 @@ export default function AguaCaliente() {
         image="/hero-agua-caliente.jpg"
       />
 
+      {/* ── Intro section ── */}
+      <section className="py-16 px-6 bg-white text-center">
+        <div className="max-w-3xl mx-auto">
+          <p style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 700,
+            fontSize: '13px',
+            letterSpacing: '3px',
+            textTransform: 'uppercase',
+            color: '#e63012',
+            marginBottom: '16px',
+          }}>
+            Sistemas de Agua Caliente
+          </p>
+          <h2 style={{
+            fontFamily: "'Roboto', sans-serif",
+            fontWeight: 800,
+            fontSize: 'clamp(1.6rem, 3vw, 2.4rem)',
+            color: '#111827',
+            lineHeight: 1.2,
+            marginBottom: '20px',
+          }}>
+            Especialistas en sistemas centralizados de agua caliente.
+          </h2>
+          <div style={{ width: '48px', height: '4px', backgroundColor: '#e63012', margin: '0 auto 24px' }} />
+          <p style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 500,
+            fontSize: '15px',
+            color: '#4b5563',
+            lineHeight: 1.8,
+          }}>
+            Sistemas idóneos para aplicaciones deportiva, hoteleras, hospitalarias, industriales y residenciales
+            entre otras. Sistemas que superan los 50°C a 70°C. Compatibilidad solar, sistemas de colectores solares
+            generando una significativa reducción del consumo energético.
+          </p>
+        </div>
+      </section>
+
       <section className="py-14 px-6 bg-gray-50">
         <div className="max-w-5xl mx-auto flex flex-col gap-8">
           <ProductCard
