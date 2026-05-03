@@ -12,9 +12,11 @@ const ACCENT = '#e63012';
 type ImageSlideData = {
   id: number; bg: string; layout: 'image';
   image: string; title: string; bullets: string[];
-  titleColor?: string;           // default: 'white'
-  textSide?: 'left' | 'right';  // default: 'left'
-  textVAlign?: 'center' | 'top'; // default: 'center'
+  titleColor?: string;
+  textSide?: 'left' | 'right';
+  textVAlign?: 'center' | 'top';
+  bulletColor?: string;  // default: CYAN
+  bulletSize?: string;   // default: '18px'
 };
 type ColorSlideData = {
   id: number; bg: string; layout: 'color';
@@ -36,7 +38,9 @@ const slides: SlideData[] = [
     titleColor: GOLD,
     textSide: 'right',
     textVAlign: 'top',
-    bullets: ['CLIMATIZACIÓN', 'CLIMATIZACIÓN DE PISCINAS Y JACUZZIS'],
+    bullets: ['CLIMATIZACIÓN DE PISCINAS Y JACUZZIS'],
+    bulletColor: BLUE,
+    bulletSize: '22px',
   },
   {
     id: 3, bg: BLUE, layout: 'image',
@@ -75,7 +79,7 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
         position: 'absolute',
         top: isTop ? '70px' : '50%',
         transform: isTop ? 'none' : 'translateY(-50%)',
-        right: '72px',
+        right: '10%',
         maxWidth: '46%',
         textAlign: 'right',
       }
@@ -85,7 +89,7 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
         display: 'flex', flexDirection: 'column',
         justifyContent: isTop ? 'flex-start' : 'center',
         paddingTop: isTop ? '70px' : undefined,
-        paddingLeft: '72px',
+        paddingLeft: '10%',
         paddingRight: '40px',
         maxWidth: '52%',
       };
@@ -127,11 +131,11 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
           {slide.bullets.map((b, bi) => (
             <p key={bi} style={{
               fontFamily: "'Montserrat', sans-serif",
-              fontSize: '18px',
+              fontSize: slide.bulletSize ?? '18px',
               fontWeight: 700,
               letterSpacing: '2.5px',
               textTransform: 'uppercase',
-              color: CYAN,
+              color: slide.bulletColor ?? CYAN,
               opacity: isActive ? 1 : 0,
               transform: isActive ? 'translateY(0)' : fromTransform,
               transition: `opacity 0.6s ease-out ${0.45 + bi * 0.13}s, transform 0.6s ease-out ${0.45 + bi * 0.13}s`,
