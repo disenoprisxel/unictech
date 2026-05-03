@@ -68,10 +68,6 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
   const isTop    = slide.textVAlign === 'top';
   const titleCol = slide.titleColor ?? 'white';
 
-  /* Gradiente de legibilidad: desde el lado donde está el texto */
-  const overlay = isRight
-    ? 'linear-gradient(270deg, rgba(15,32,96,0.88) 0%, rgba(15,32,96,0.55) 50%, rgba(0,0,0,0.05) 100%)'
-    : 'linear-gradient(90deg,  rgba(21,38,116,0.82) 0%, rgba(21,38,116,0.50) 55%, rgba(0,0,0,0.10) 100%)';
 
   /* Contenedor de texto */
   const textBox: CSSProperties = isRight
@@ -102,9 +98,6 @@ function ImageSlide({ slide, isActive }: { slide: ImageSlideData; isActive: bool
       {/* Imagen de fondo */}
       <img src={slide.image} alt={slide.title}
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-
-      {/* Overlay de legibilidad */}
-      <div style={{ position: 'absolute', inset: 0, background: overlay }} />
 
       {/* Bloque de texto */}
       <div style={textBox}>
