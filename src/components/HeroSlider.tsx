@@ -70,7 +70,7 @@ const slides: SlideData[] = [
     textSide: 'right',
     textVAlign: 'bottom',
     bullets: ['CONFORT QUE MERECES', 'AMBIENTANDO LOS MOMENTOS'],
-    bulletColor: BLUE,
+    bulletColor: GOLD,
     bulletSize: '20px',
   },
 ];
