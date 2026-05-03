@@ -10,9 +10,8 @@ export default function AguaCaliente() {
   return (
     <>
       <PageHero
-        tag="TU MEJOR ELECCIÓN"
         title="Agua Caliente"
-        subtitle="Especialistas en sistemas centralizados de agua caliente. Sistemas idóneos para aplicaciones deportivas, hoteleras, hospitalarias, industriales y residenciales. Sistemas que superan los 50°C a 70°C. Compatibilidad solar."
+        image="/hero-agua-caliente.jpg"
       />
 
       <section className="py-14 px-6 bg-gray-50">

@@ -2,9 +2,49 @@ interface PageHeroProps {
   tag?: string;
   title: string;
   subtitle?: string;
+  image?: string; // ruta pública, ej: '/hero-agua-caliente.jpg'
 }
 
-export default function PageHero({ tag, title, subtitle }: PageHeroProps) {
+export default function PageHero({ tag, title, subtitle, image }: PageHeroProps) {
+  /* ── Hero con imagen de fondo ── */
+  if (image) {
+    return (
+      <section
+        className="relative flex items-center justify-center text-center"
+        style={{ height: '420px', overflow: 'hidden' }}
+      >
+        <img
+          src={image}
+          alt={title}
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+          }}
+        />
+        {/* Overlay sutil para legibilidad */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(0,0,0,0.35)',
+        }} />
+        <h1
+          className="relative z-10 uppercase"
+          style={{
+            fontFamily: "'Roboto', sans-serif",
+            fontWeight: 900,
+            fontSize: 'clamp(2.8rem, 6vw, 5rem)',
+            color: 'white',
+            letterSpacing: '3px',
+            lineHeight: 1.1,
+          }}
+        >
+          {title}
+        </h1>
+      </section>
+    );
+  }
+
+  /* ── Hero de color sólido (original) ── */
   return (
     <section
       className="text-center py-20 px-6"
