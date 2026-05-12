@@ -43,7 +43,7 @@ export default function Contacto() {
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.4607267576516!2d-74.06835492390488!3d4.68971469528526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9adcd22042c5%3A0xd0359ce839838c51!2sMaster%20Center!5e0!3m2!1ses-419!2sco!4v1778619362662!5m2!1ses-419!2sco"
               width="100%"
-              height="420"
+              height="630"
               style={{ border: 0, display: 'block' }}
               allowFullScreen
               loading="lazy"
