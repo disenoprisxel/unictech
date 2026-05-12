@@ -207,7 +207,7 @@ export default function Calefaccion() {
             {/* Imagen */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src="/producto-radiadores.jpg" alt="Radiadores de Aluminio"
-                style={{ width: '100%', maxWidth: '460px', height: 'auto', display: 'block', borderRadius: '4px' }} />
+                style={{ width: '100%', maxWidth: '391px', height: 'auto', display: 'block', borderRadius: '4px' }} />
             </div>
 
             {/* Texto */}
@@ -268,7 +268,7 @@ export default function Calefaccion() {
             {/* Imagen */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src="/producto-toalleros.jpg" alt="Toalleros de Aluminio"
-                style={{ width: '100%', maxWidth: '480px', height: 'auto', display: 'block', borderRadius: '4px' }} />
+                style={{ width: '100%', maxWidth: '408px', height: 'auto', display: 'block', borderRadius: '4px' }} />
             </div>
           </div>
         </section>
