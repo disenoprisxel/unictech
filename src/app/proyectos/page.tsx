@@ -10,7 +10,7 @@ export default function Proyectos() {
   return (
     <>
       <PageHero
-        title="Proyectos Realizados"
+        title="Nuestros Proyectos"
         image="/hero-proyectos.jpg"
       />
       <ProyectosGrid />
