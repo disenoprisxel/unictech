@@ -1,46 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-
-type Categoria = 'Todas' | 'Calderas' | 'Calefacción' | 'Calentadores' | 'Chimeneas' | 'Colectores Solares';
+import Link from 'next/link';
+import { proyectos, categoryColors, type Categoria } from './data';
 
 const categorias: Categoria[] = ['Todas', 'Calderas', 'Calefacción', 'Calentadores', 'Chimeneas', 'Colectores Solares'];
 
-type Proyecto = {
-  nombre: string;
-  ubicacion: string;
-  categoria: Exclude<Categoria, 'Todas'>;
-  año: number;
-  image?: string;
-};
-
-const proyectos: Proyecto[] = [
-  { nombre: 'Hotel Ibis',                                     categoria: 'Calderas',           ubicacion: 'Cartagena',                         año: 2022, image: '/proyectos/hotel-ibis.jpg'         },
-  { nombre: 'Santa Ana Oriental',                             categoria: 'Calderas',           ubicacion: 'Bogotá',                            año: 2022, image: '/proyectos/santa-ana.jpg'           },
-  { nombre: 'La Pradera de Potosí',                           categoria: 'Calderas',           ubicacion: 'La Calera',                         año: 2021, image: '/proyectos/pradera-potosi.jpg'      },
-  { nombre: 'La Pradera de Potosí – Baños & Jacuzzi',         categoria: 'Calderas',           ubicacion: 'La Calera',                         año: 2021, image: '/proyectos/pradera-jacuzzi.jpg'     },
-  { nombre: 'Caldera Bosch Therm 8000',                       categoria: 'Calderas',           ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, image: '/proyectos/pradera-caldera.jpg'     },
-  { nombre: 'Caldera Bosch Therm 8000',                       categoria: 'Calderas',           ubicacion: 'Colegio Gimnasio Moderno – Bogotá', año: 2022                                              },
-  { nombre: 'Condominio Moraji',                              categoria: 'Calderas',           ubicacion: 'Bogotá',                            año: 2022                                              },
-  { nombre: 'Calefactores tipo Hongo',                        categoria: 'Calefacción',        ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, image: '/proyectos/calefactor-hongo.jpg'    },
-  { nombre: 'Calefacción Eléctrica',                          categoria: 'Calefacción',        ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, image: '/proyectos/pradera-calefaccion.jpg' },
-  { nombre: 'Calentadores de Acumulación Acero Inoxidable',   categoria: 'Calentadores',       ubicacion: 'Pradera de Potosí – La Calera',     año: 2021                                              },
-  { nombre: 'Calentador de Paso Bosch',                       categoria: 'Calentadores',       ubicacion: 'Mesa de Yeguas',                    año: 2022                                              },
-  { nombre: 'Chimenea Centro de Fuego',                       categoria: 'Chimeneas',          ubicacion: 'Pradera Potosí',                    año: 2022, image: '/proyectos/chimenea-bogota.jpg'     },
-  { nombre: 'Chimenea a Gas – Modulación de Llama',           categoria: 'Chimeneas',          ubicacion: 'Bogotá',                            año: 2022                                              },
-  { nombre: 'Conjunto Encenillos',                            categoria: 'Colectores Solares', ubicacion: 'Medellín',                          año: 2022, image: '/proyectos/colector-solar.jpg'      },
-];
-
-const categoryColors: Record<Exclude<Categoria, 'Todas'>, string> = {
-  Calderas:           '#152674',
-  Calefacción:        '#009bdb',
-  Calentadores:       '#db9600',
-  Chimeneas:          '#c0392b',
-  'Colectores Solares': '#27ae60',
-};
-
 export default function ProyectosGrid() {
   const [selected, setSelected] = useState<Categoria>('Todas');
+  const [hovered, setHovered] = useState<string | null>(null);
 
   const filtered = selected === 'Todas' ? proyectos : proyectos.filter((p) => p.categoria === selected);
 
@@ -65,31 +33,72 @@ export default function ProyectosGrid() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((p, i) => {
+          {filtered.map((p) => {
             const color = categoryColors[p.categoria];
+            const isHovered = hovered === p.slug;
             return (
-              <div key={i} style={{
-                borderRadius: '16px',
-                overflow: 'hidden',
-                position: 'relative',
-                height: '280px',
-                backgroundColor: color,
-                boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
-              }}>
+              <Link
+                key={p.slug}
+                href={`/proyectos/${p.slug}`}
+                onMouseEnter={() => setHovered(p.slug)}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                  display: 'block',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  height: '280px',
+                  backgroundColor: color,
+                  boxShadow: isHovered
+                    ? '0 8px 32px rgba(0,0,0,0.22)'
+                    : '0 4px 20px rgba(0,0,0,0.12)',
+                  transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+                  transition: 'box-shadow 0.25s ease, transform 0.25s ease',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                }}
+              >
                 {/* Imagen de fondo */}
                 {p.image && (
                   <img src={p.image} alt={p.nombre}
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%',
-                      objectFit: 'cover', objectPosition: 'center' }} />
+                    style={{
+                      position: 'absolute', inset: 0,
+                      width: '100%', height: '100%',
+                      objectFit: 'cover', objectPosition: 'center',
+                      transform: isHovered ? 'scale(1.04)' : 'scale(1)',
+                      transition: 'transform 0.35s ease',
+                    }} />
                 )}
 
-                {/* Gradiente oscuro inferior */}
+                {/* Gradiente oscuro base */}
                 <div style={{
                   position: 'absolute', inset: 0,
                   background: p.image
                     ? 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.72) 100%)'
                     : 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%)',
+                  transition: 'background 0.25s ease',
                 }} />
+
+                {/* Overlay "Ver Proyecto" en hover */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  backgroundColor: 'rgba(0,0,0,0.45)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  opacity: isHovered ? 1 : 0,
+                  transition: 'opacity 0.25s ease',
+                }}>
+                  <span style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontWeight: 700, fontSize: '14px',
+                    letterSpacing: '2px', textTransform: 'uppercase',
+                    color: 'white',
+                    border: '2px solid white',
+                    padding: '10px 24px',
+                    borderRadius: '4px',
+                  }}>
+                    Ver Proyecto
+                  </span>
+                </div>
 
                 {/* Badge categoría — arriba izquierda */}
                 <div style={{
@@ -130,10 +139,10 @@ export default function ProyectosGrid() {
                     fontFamily: "'Montserrat', sans-serif",
                     fontSize: '12.5px', color: 'rgba(255,255,255,0.80)',
                   }}>
-                    📍 {p.ubicacion}
+                    {p.ubicacion}
                   </p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
