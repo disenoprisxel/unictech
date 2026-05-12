@@ -36,7 +36,7 @@ export default function ProjectCarousel({ images, nombre, color }: ProjectCarous
         borderRadius: '18px', overflow: 'hidden',
         boxShadow: '0 24px 64px rgba(0,0,0,0.20)',
         aspectRatio: '4/3',
-        backgroundColor: '#111',
+        backgroundColor: '#f3f4f6',
       }}>
         {/* Images */}
         {images.map((src, i) => (
@@ -47,7 +47,8 @@ export default function ProjectCarousel({ images, nombre, color }: ProjectCarous
             style={{
               position: 'absolute', inset: 0,
               width: '100%', height: '100%',
-              objectFit: 'cover', display: 'block',
+              objectFit: 'contain', display: 'block',
+              padding: '8px',
               opacity: i === current ? 1 : 0,
               transition: 'opacity 0.45s ease',
             }}
