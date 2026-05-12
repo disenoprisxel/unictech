@@ -3,6 +3,7 @@ export type Categoria = 'Todas' | 'Calderas' | 'Calefacción' | 'Calentadores' |
 export type Proyecto = {
   slug: string;
   nombre: string;
+  titulo?: string; // título descriptivo del trabajo realizado (opcional)
   ubicacion: string;
   categoria: Exclude<Categoria, 'Todas'>;
   año: number;
@@ -10,7 +11,7 @@ export type Proyecto = {
 };
 
 export const proyectos: Proyecto[] = [
-  { slug: 'hotel-ibis',               nombre: 'Hotel Ibis',                                   categoria: 'Calderas',           ubicacion: 'Cartagena',                         año: 2022, images: ['/proyectos/hotel-ibis.jpg', '/proyectos/hotel-ibis-2.jpg'] },
+  { slug: 'hotel-ibis',               nombre: 'Hotel Ibis',  titulo: 'Mantenimiento de Calderas industriales', categoria: 'Calderas', ubicacion: 'Cartagena', año: 2022, images: ['/proyectos/hotel-ibis.jpg', '/proyectos/hotel-ibis-2.jpg'] },
   { slug: 'santa-ana-oriental',       nombre: 'Santa Ana Oriental',                           categoria: 'Calderas',           ubicacion: 'Bogotá',                            año: 2022, images: ['/proyectos/santa-ana.jpg']           },
   { slug: 'pradera-potosi',           nombre: 'La Pradera de Potosí',                         categoria: 'Calderas',           ubicacion: 'La Calera',                         año: 2021, images: ['/proyectos/pradera-potosi.jpg']      },
   { slug: 'pradera-potosi-jacuzzi',   nombre: 'La Pradera de Potosí – Baños & Jacuzzi',       categoria: 'Calderas',           ubicacion: 'La Calera',                         año: 2021, images: ['/proyectos/pradera-jacuzzi.jpg']     },

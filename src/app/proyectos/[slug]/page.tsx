@@ -61,7 +61,7 @@ export default async function ProyectoDetalle({ params }: { params: Promise<{ sl
                 letterSpacing: '-0.5px',
                 display: 'block',
               }}>
-                {proyecto.nombre}
+                {proyecto.titulo ?? proyecto.nombre}
               </h1>
 
               {/* Subtitle: nombre – ubicacion in red */}
