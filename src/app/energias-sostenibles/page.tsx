@@ -1,68 +1,83 @@
 import PageHero from '@/components/PageHero';
-import ProductCard from '@/components/ProductCard';
 
 export const metadata = {
   title: 'Energías Sostenibles | Unictech SAS',
   description: 'Colectores solares de fabricación alemana. Ahorro de hasta 40% en consumo de gas.',
 };
 
+const CHECK = '#e63012';
+
+function CheckList({ items }: { items: string[] }) {
+  return (
+    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      {items.map((item, i) => (
+        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px',
+          fontFamily: "'Montserrat', sans-serif", fontSize: '14.5px', color: '#374151', lineHeight: 1.6 }}>
+          <span style={{ color: CHECK, fontWeight: 700, flexShrink: 0, marginTop: '2px' }}>✓</span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function EnergiasSostenibles() {
   return (
     <>
-      <PageHero
-        tag="TU MEJOR ELECCIÓN"
-        title="Energías Sostenibles"
-        subtitle="Ahorro de Hasta 40% en Consumo de Gas — Colectores Solares de fabricación alemana"
-      />
+      {/* ── Hero ── */}
+      <PageHero title="Colector Solar" image="/hero-energias.jpg" />
 
-      <section className="py-14 px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <ProductCard
-            name="Colector Solar"
-            tagline="Diseño y fabricación Alemana — Máxima durabilidad y prolongada vida útil."
-            features={[
-              'Diseño y fabricación Alemana',
-              'Máxima duración y prolongada vida útil',
-              'Captación de radiación solar mejorada',
-              'Mejor retención y transferencia de calor al agua',
-              'Conexión en paralelo de hasta 10 colectores',
-              'Vidrios Prismáticos de alta eficiencia',
-              'Serpentín de cobre con uniones en soldadura continua',
-            ]}
-            benefits={[
-              'Ahorro de hasta 40% en consumo de gas',
-              'Reducción del impacto ambiental',
-              'Compatible con sistemas de agua caliente existentes',
-            ]}
-          />
+      {/* ── Intro ── */}
+      <section className="py-16 px-6 bg-white text-center">
+        <div className="max-w-3xl mx-auto">
+          <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: '13px',
+            letterSpacing: '3px', textTransform: 'uppercase', color: CHECK, marginBottom: '16px' }}>
+            Tu Mejor Elección
+          </p>
+          <h2 style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 800,
+            fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', color: '#111827', lineHeight: 1.2, marginBottom: '20px' }}>
+            Ahorro de Hasta 40% en Consumo de Gas
+          </h2>
+          <div style={{ width: '48px', height: '4px', backgroundColor: CHECK, margin: '0 auto' }} />
         </div>
       </section>
 
-      {/* Stats section */}
-      <section
-        className="py-12 px-6"
-        style={{ backgroundColor: 'var(--azul-oscuro)' }}
-      >
-        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-white">
-          {[
-            { value: '40%', label: 'Ahorro en gas' },
-            { value: '10', label: 'Colectores en paralelo' },
-            { value: '100%', label: 'Fabricación alemana' },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p
-                className="font-extrabold text-5xl mb-1"
-                style={{ color: 'var(--dorado)' }}
-              >
-                {stat.value}
+      {/* ── Colector Solar — fondo gris, texto izq, imagen der ── */}
+      <div style={{ position: 'relative', backgroundColor: '#f3f4f6' }}>
+        <section className="px-6 py-16">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Texto */}
+            <div>
+              <h2 style={{ fontFamily: "'Roboto', sans-serif", fontWeight: 800,
+                fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: '#111827', lineHeight: 1.15, marginBottom: '12px' }}>
+                Colector Solar
+              </h2>
+              <div style={{ width: '40px', height: '4px', backgroundColor: CHECK, marginBottom: '20px' }} />
+
+              <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: '12px',
+                letterSpacing: '2px', textTransform: 'uppercase', color: CHECK, marginBottom: '14px' }}>
+                Características Generales
               </p>
-              <p className="text-white/70 text-sm uppercase tracking-widest font-semibold">
-                {stat.label}
-              </p>
+              <CheckList items={[
+                'Diseño y fabricación Alemana',
+                'Máxima duración y prolongada vida útil',
+                'Captación de radiación solar mejorada',
+                'Mejor retención y transferencia de calor al agua',
+                'Permite conexión en paralelo de hasta 10 colectores',
+                'Vidrios Prismático que proporciona una captación solar superior y gran eficiencia en un área',
+                'Durabilidad y confiabilidad, serpentín de cobre con uniones en soldadura continua',
+              ]} />
             </div>
-          ))}
-        </div>
-      </section>
+
+            {/* Imagen */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img src="/producto-colector-solar.jpg" alt="Colector Solar"
+                style={{ width: '100%', maxWidth: '520px', height: 'auto', display: 'block', borderRadius: '4px' }} />
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 }
