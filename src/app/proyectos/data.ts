@@ -22,7 +22,7 @@ export const proyectos: Proyecto[] = [
   { slug: 'calentadores-acumulacion', nombre: 'Calentadores de Acumulación Acero Inoxidable', categoria: 'Calentadores',       ubicacion: 'Pradera de Potosí – La Calera',     año: 2021, image: '/proyectos/calentadores-acumulacion.jpg' },
   { slug: 'calentador-paso-bosch',    nombre: 'Calentador de Paso Bosch',                     categoria: 'Calentadores',       ubicacion: 'Mesa de Yeguas',                    año: 2022, image: '/proyectos/calentador-paso-bosch.jpg'    },
   { slug: 'chimenea-centro-fuego',    nombre: 'Chimenea Centro de Fuego',                     categoria: 'Chimeneas',          ubicacion: 'Pradera Potosí',                    año: 2022, image: '/proyectos/chimenea-bogota.jpg'     },
-  { slug: 'chimenea-gas',             nombre: 'Chimenea a Gas – Modulación de Llama',         categoria: 'Chimeneas',          ubicacion: 'Bogotá',                            año: 2022                                              },
+  { slug: 'chimenea-gas',             nombre: 'Chimenea a Gas – Modulación de Llama',         categoria: 'Chimeneas',          ubicacion: 'Bogotá',                            año: 2022, image: '/proyectos/chimenea-gas.jpg'           },
   { slug: 'conjunto-encenillos',      nombre: 'Conjunto Encenillos',                          categoria: 'Colectores Solares', ubicacion: 'Medellín',                          año: 2022, image: '/proyectos/colector-solar.jpg'      },
 ];
 
