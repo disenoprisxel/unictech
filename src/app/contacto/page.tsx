@@ -35,10 +35,9 @@ export default function Contacto() {
 
       {/* ── Mapa + datos ── */}
       <section className="pb-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
 
-          {/* Google Maps embed */}
-          <div style={{ borderRadius: '8px', overflow: 'hidden', marginBottom: '48px',
+          {/* Google Maps embed — ancho ampliado */}
+          <div className="max-w-6xl mx-auto" style={{ borderRadius: '8px', overflow: 'hidden', marginBottom: '48px',
             boxShadow: '0 2px 16px rgba(0,0,0,0.10)' }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.4607267576516!2d-74.06835492390488!3d4.68971469528526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9adcd22042c5%3A0xd0359ce839838c51!2sMaster%20Center!5e0!3m2!1ses-419!2sco!4v1778619362662!5m2!1ses-419!2sco"
@@ -53,7 +52,7 @@ export default function Contacto() {
           </div>
 
           {/* Info en 3 columnas */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
 
             {/* Dirección */}
             <div>
@@ -107,7 +106,6 @@ export default function Contacto() {
               </p>
             </div>
           </div>
-        </div>
       </section>
     </>
   );
