@@ -59,8 +59,8 @@ export default function ProyectosGrid() {
                 }}
               >
                 {/* Imagen de fondo */}
-                {p.image && (
-                  <img src={p.image} alt={p.nombre}
+                {p.images[0] && (
+                  <img src={p.images[0]} alt={p.nombre}
                     style={{
                       position: 'absolute', inset: 0,
                       width: '100%', height: '100%',
@@ -73,7 +73,7 @@ export default function ProyectosGrid() {
                 {/* Gradiente oscuro base */}
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: p.image
+                  background: p.images[0]
                     ? 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.72) 100%)'
                     : 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%)',
                   transition: 'background 0.25s ease',

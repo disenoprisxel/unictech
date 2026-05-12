@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { proyectos, categoryColors } from '../data';
+import ProjectCarousel from './ProjectCarousel';
 
 export function generateStaticParams() {
   return proyectos.map((p) => ({ slug: p.slug }));
@@ -38,146 +39,76 @@ export default async function ProyectoDetalle({ params }: { params: Promise<{ sl
 
             {/* ──────── Left: Project Info ──────── */}
             <div>
-              {/* Red accent bar */}
-              <div style={{
-                width: '52px', height: '5px',
-                backgroundColor: '#e63012', borderRadius: '2px',
-                marginBottom: '28px',
-              }} />
-
-              {/* Category badge */}
-              <span style={{
-                display: 'inline-block',
-                backgroundColor: color, color: 'white',
-                fontFamily: "'Montserrat', sans-serif", fontWeight: 700,
-                fontSize: '11px', letterSpacing: '2.5px', textTransform: 'uppercase',
-                padding: '6px 18px', borderRadius: '20px',
-                marginBottom: '28px',
-              }}>
-                {proyecto.categoria}
-              </span>
+              {/* Line + [ CATEGORIA ] */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px' }}>
+                <div style={{ width: '44px', height: '2px', backgroundColor: '#e63012', flexShrink: 0 }} />
+                <span style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 700, fontSize: '12px',
+                  letterSpacing: '2.5px', textTransform: 'uppercase',
+                  color: '#e63012',
+                }}>
+                  [ {proyecto.categoria} ]
+                </span>
+              </div>
 
               {/* Project title */}
               <h1 style={{
                 fontFamily: "'Roboto', sans-serif", fontWeight: 900,
-                fontSize: 'clamp(1.9rem, 3vw, 2.9rem)',
-                color: '#111827', lineHeight: 1.15,
-                marginBottom: '28px', letterSpacing: '-0.5px',
+                fontSize: 'clamp(2rem, 3.2vw, 3rem)',
+                color: '#111827', lineHeight: 1.12,
+                marginBottom: '18px',
+                letterSpacing: '-0.5px',
                 display: 'block',
               }}>
                 {proyecto.nombre}
               </h1>
 
-              {/* Thin divider */}
-              <div style={{
-                width: '100%', height: '1px',
-                backgroundColor: '#e5e7eb', marginBottom: '32px',
-              }} />
+              {/* Subtitle: nombre – ubicacion in red */}
+              <p style={{
+                fontFamily: "'Roboto', sans-serif", fontWeight: 700,
+                fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
+                color: '#e63012',
+                marginBottom: '36px',
+                lineHeight: 1.3,
+              }}>
+                {proyecto.nombre} – {proyecto.ubicacion}
+              </p>
 
-              {/* Meta rows */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '48px' }}>
-                {[
-                  { label: 'Ubicación', value: proyecto.ubicacion },
-                  { label: 'Año', value: String(proyecto.año) },
-                  { label: 'Categoría', value: proyecto.categoria },
-                ].map(({ label, value }) => (
-                  <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                    {/* Dot */}
-                    <div style={{
-                      width: '7px', height: '7px', borderRadius: '50%',
-                      backgroundColor: '#e63012', flexShrink: 0,
-                    }} />
-                    {/* Label */}
-                    <span style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase',
-                      color: '#b0b8c4', fontWeight: 700,
-                      minWidth: '96px',
-                    }}>
-                      {label}
-                    </span>
-                    {/* Value */}
-                    <span style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: '14.5px', color: '#374151', fontWeight: 600,
-                    }}>
-                      {value}
-                    </span>
-                  </div>
-                ))}
+              {/* Meta row */}
+              <div style={{
+                display: 'flex', gap: '28px', flexWrap: 'wrap',
+                marginBottom: '44px',
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '13px', color: '#6b7280', fontWeight: 600,
+              }}>
+                <span>📅 {proyecto.año}</span>
+                <span>📍 {proyecto.ubicacion}</span>
               </div>
 
-              {/* Back link */}
+              {/* Volver button — solid red */}
               <Link
                 href="/proyectos"
                 style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '8px',
+                  display: 'inline-block',
                   fontFamily: "'Montserrat', sans-serif", fontWeight: 700,
-                  fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase',
-                  color: '#152674', textDecoration: 'none',
-                  borderBottom: '2px solid #152674', paddingBottom: '3px',
+                  fontSize: '13px', letterSpacing: '1.5px',
+                  color: 'white', backgroundColor: '#e63012',
+                  padding: '13px 32px', borderRadius: '4px',
+                  textDecoration: 'none',
                 }}
               >
-                ← Volver a Proyectos
+                Volver
               </Link>
             </div>
 
-            {/* ──────── Right: Image ──────── */}
-            <div style={{ position: 'relative' }}>
-              {proyecto.image ? (
-                <>
-                  {/* Decorative offset background block */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '24px', right: '-24px',
-                    width: '100%', height: '100%',
-                    backgroundColor: color,
-                    opacity: 0.12,
-                    borderRadius: '18px',
-                    zIndex: 0,
-                  }} />
+            {/* ──────── Right: Image Carousel ──────── */}
+            <ProjectCarousel
+              images={proyecto.images}
+              nombre={proyecto.nombre}
+              color={color}
+            />
 
-                  {/* Main image */}
-                  <div style={{
-                    position: 'relative', zIndex: 1,
-                    borderRadius: '18px', overflow: 'hidden',
-                    boxShadow: '0 24px 64px rgba(0,0,0,0.20)',
-                    aspectRatio: '4/3',
-                  }}>
-                    <img
-                      src={proyecto.image}
-                      alt={proyecto.nombre}
-                      style={{
-                        width: '100%', height: '100%',
-                        objectFit: 'cover', display: 'block',
-                      }}
-                    />
-                    {/* Subtle bottom gradient for polish */}
-                    <div style={{
-                      position: 'absolute', bottom: 0, left: 0, right: 0,
-                      height: '80px',
-                      background: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.12))',
-                    }} />
-                  </div>
-                </>
-              ) : (
-                <div style={{
-                  borderRadius: '18px',
-                  aspectRatio: '4/3',
-                  backgroundColor: color,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <span style={{
-                    color: 'white',
-                    fontFamily: "'Montserrat', sans-serif",
-                    fontWeight: 700, fontSize: '16px',
-                    letterSpacing: '2px', textTransform: 'uppercase',
-                  }}>
-                    {proyecto.categoria}
-                  </span>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </section>
