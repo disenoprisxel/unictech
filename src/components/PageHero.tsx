@@ -11,7 +11,7 @@ export default function PageHero({ tag, title, subtitle, image }: PageHeroProps)
     return (
       <section
         className="relative flex items-center justify-center text-center"
-        style={{ height: '420px', overflow: 'hidden' }}
+        style={{ height: '210px', overflow: 'hidden' }}
       >
         <img
           src={image}
@@ -32,7 +32,7 @@ export default function PageHero({ tag, title, subtitle, image }: PageHeroProps)
           style={{
             fontFamily: "'Roboto', sans-serif",
             fontWeight: 900,
-            fontSize: 'clamp(2.8rem, 6vw, 5rem)',
+            fontSize: 'clamp(1.4rem, 3vw, 2.2rem)',
             color: 'white',
             letterSpacing: '3px',
             lineHeight: 1.1,
