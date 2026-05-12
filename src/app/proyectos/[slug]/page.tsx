@@ -186,23 +186,25 @@ export default async function ProyectoDetalle({ params }: { params: Promise<{ sl
       <section style={{
         position: 'relative',
         backgroundColor: '#0b1120',
-        padding: '100px 24px',
+        padding: '52px 24px',
         textAlign: 'center',
         overflow: 'hidden',
       }}>
-        {/* Radial glow accents */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `
-            radial-gradient(ellipse at 15% 50%, rgba(21,38,116,0.65) 0%, transparent 55%),
-            radial-gradient(ellipse at 85% 50%, rgba(230,48,18,0.22) 0%, transparent 55%)
-          `,
-        }} />
+        {/* Imagen de fondo */}
+        <img
+          src="/cta-proyectos.jpg"
+          alt=""
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+          }}
+        />
 
-        {/* Fine diagonal lines texture */}
+        {/* Overlay oscuro sobre la imagen */}
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: 'repeating-linear-gradient(135deg, rgba(255,255,255,0.013) 0px, rgba(255,255,255,0.013) 1px, transparent 1px, transparent 32px)',
+          background: 'rgba(10,16,35,0.72)',
         }} />
 
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '680px', margin: '0 auto' }}>
