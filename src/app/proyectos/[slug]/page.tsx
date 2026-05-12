@@ -64,7 +64,20 @@ export default async function ProyectoDetalle({ params }: { params: Promise<{ sl
                 {proyecto.titulo ?? proyecto.nombre}
               </h1>
 
-              {/* Subtitle: nombre – ubicacion in red */}
+              {/* Subtítulo negro (opcional) */}
+              {proyecto.subtitulo && (
+                <p style={{
+                  fontFamily: "'Roboto', sans-serif", fontWeight: 700,
+                  fontSize: 'clamp(0.95rem, 1.4vw, 1.1rem)',
+                  color: '#111827',
+                  marginBottom: '8px',
+                  lineHeight: 1.3,
+                }}>
+                  {proyecto.subtitulo}
+                </p>
+              )}
+
+              {/* Nombre – Ubicación en rojo */}
               <p style={{
                 fontFamily: "'Roboto', sans-serif", fontWeight: 700,
                 fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
