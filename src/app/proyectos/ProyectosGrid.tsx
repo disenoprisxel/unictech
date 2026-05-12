@@ -79,27 +79,6 @@ export default function ProyectosGrid() {
                   transition: 'background 0.25s ease',
                 }} />
 
-                {/* Overlay "Ver Proyecto" en hover */}
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  backgroundColor: 'rgba(0,0,0,0.45)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  opacity: isHovered ? 1 : 0,
-                  transition: 'opacity 0.25s ease',
-                }}>
-                  <span style={{
-                    fontFamily: "'Montserrat', sans-serif",
-                    fontWeight: 700, fontSize: '14px',
-                    letterSpacing: '2px', textTransform: 'uppercase',
-                    color: 'white',
-                    border: '2px solid white',
-                    padding: '10px 24px',
-                    borderRadius: '4px',
-                  }}>
-                    Ver Proyecto
-                  </span>
-                </div>
-
                 {/* Badge categoría — arriba izquierda */}
                 <div style={{
                   position: 'absolute', top: '14px', left: '14px',
@@ -123,24 +102,44 @@ export default function ProyectosGrid() {
                   {p.año}
                 </div>
 
-                {/* Título y ubicación — abajo */}
+                {/* Título, ubicación y "Ver proyecto" — abajo */}
                 <div style={{
                   position: 'absolute', bottom: 0, left: 0, right: 0,
                   padding: '16px 18px',
+                  display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '8px',
                 }}>
-                  <h3 style={{
-                    fontFamily: "'Roboto', sans-serif",
-                    fontWeight: 700, fontSize: '16px',
-                    color: 'white', lineHeight: 1.3, marginBottom: '4px',
-                  }}>
-                    {p.nombre}
-                  </h3>
-                  <p style={{
+                  {/* Texto izquierda */}
+                  <div>
+                    <h3 style={{
+                      fontFamily: "'Roboto', sans-serif",
+                      fontWeight: 700, fontSize: '16px',
+                      color: 'white', lineHeight: 1.3, marginBottom: '4px',
+                    }}>
+                      {p.nombre}
+                    </h3>
+                    <p style={{
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '12.5px', color: 'rgba(255,255,255,0.80)',
+                    }}>
+                      {p.ubicacion}
+                    </p>
+                  </div>
+
+                  {/* "Ver proyecto" — esquina inferior derecha, sólo en hover */}
+                  <span style={{
                     fontFamily: "'Montserrat', sans-serif",
-                    fontSize: '12.5px', color: 'rgba(255,255,255,0.80)',
+                    fontWeight: 700, fontSize: '11.5px',
+                    letterSpacing: '1.5px', textTransform: 'uppercase',
+                    color: '#e63012',
+                    opacity: isHovered ? 1 : 0,
+                    transform: isHovered ? 'translateX(0)' : 'translateX(6px)',
+                    transition: 'opacity 0.25s ease, transform 0.25s ease',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    paddingBottom: '2px',
                   }}>
-                    {p.ubicacion}
-                  </p>
+                    Ver proyecto →
+                  </span>
                 </div>
               </Link>
             );
