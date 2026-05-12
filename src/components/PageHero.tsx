@@ -25,7 +25,7 @@ export default function PageHero({ tag, title, subtitle, image }: PageHeroProps)
         {/* Overlay sutil para legibilidad */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'rgba(0,0,0,0.35)',
+          background: 'rgba(0,0,0,0.55)',
         }} />
         <h1
           className="relative z-10 uppercase"
