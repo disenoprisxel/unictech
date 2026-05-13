@@ -9,6 +9,7 @@ export type Proyecto = {
   categoria: Exclude<Categoria, 'Todas'>;
   año: number;
   images: string[];
+  videos?: string[];  // videos opcionales que se agregan al carousel después de las imágenes
 };
 
 export const proyectos: Proyecto[] = [
@@ -18,7 +19,7 @@ export const proyectos: Proyecto[] = [
   { slug: 'pradera-potosi-jacuzzi',   nombre: 'La Pradera de Potosí', titulo: 'Caldera Bosch Therm 8000', subtitulo: 'Agua Caliente - Baños & Jacuzzi', categoria: 'Calderas', ubicacion: 'La Calera', año: 2021, images: ['/proyectos/pradera-jacuzzi.jpg', '/proyectos/pradera-jacuzzi-2.jpg'] },
   { slug: 'caldera-bosch-pradera',    nombre: 'Caldera Bosch Therm 8000',                     categoria: 'Calderas',           ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, images: ['/proyectos/pradera-caldera.jpg', '/proyectos/pradera-caldera-2.jpg'] },
   { slug: 'caldera-bosch-colegio',    nombre: 'Caldera Bosch Therm 8000',                     categoria: 'Calderas',           ubicacion: 'Colegio Gimnasio Moderno – Bogotá', año: 2022, images: ['/proyectos/caldera-bosch-colegio.jpg', '/proyectos/caldera-bosch-colegio-2.jpg'] },
-  { slug: 'condominio-moraji',        nombre: 'Condominio Moraji',                            categoria: 'Calderas',           ubicacion: 'Bogotá',                            año: 2022, images: ['/proyectos/condominio-moraji.jpg']      },
+  { slug: 'condominio-moraji',        nombre: 'Condominio Moraji', titulo: 'Calefacción Hidrónica con caldera de condensación - UNICAL X+', categoria: 'Calderas', ubicacion: 'Bogotá', año: 2022, images: ['/proyectos/condominio-moraji.jpg'], videos: ['/proyectos/condominio-moraji.mp4'] },
   { slug: 'calefactores-hongo',       nombre: 'Calefactores tipo Hongo',                      categoria: 'Calefacción',        ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, images: ['/proyectos/calefactor-hongo.jpg']    },
   { slug: 'calefaccion-electrica',    nombre: 'Calefacción Eléctrica',                        categoria: 'Calefacción',        ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, images: ['/proyectos/pradera-calefaccion.jpg'] },
   { slug: 'calentadores-acumulacion', nombre: 'Calentadores de Acumulación Acero Inoxidable', categoria: 'Calentadores',       ubicacion: 'Pradera de Potosí – La Calera',     año: 2021, images: ['/proyectos/calentadores-acumulacion.jpg'] },

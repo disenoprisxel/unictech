@@ -134,6 +134,7 @@ export default async function ProyectoDetalle({ params }: { params: Promise<{ sl
             {/* ──────── Right: Image Carousel ──────── */}
             <ProjectCarousel
               images={proyecto.images}
+              videos={proyecto.videos}
               nombre={proyecto.nombre}
               color={color}
             />
