@@ -48,7 +48,7 @@ export default function Navbar() {
               style={{ backgroundColor: '#1877f2' }}>
               f
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"
+            <a href="https://www.instagram.com/unictech_sas/?utm_medium=copy_link" target="_blank" rel="noreferrer" aria-label="Instagram"
               className="flex items-center justify-center w-7 h-7 text-white"
               style={{ backgroundColor: '#1c1c1e' }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="white">

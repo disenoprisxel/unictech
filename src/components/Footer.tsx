@@ -68,7 +68,7 @@ export default function Footer() {
             </a>
             {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/unictech_sas/?utm_medium=copy_link"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
