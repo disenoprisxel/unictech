@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import ScrollAnimations from '@/components/ScrollAnimations';
 
 export const metadata: Metadata = {
   title: 'Unictech SAS – Soluciones de Confort',
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <ScrollAnimations />
       </body>
     </html>
   );

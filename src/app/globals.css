@@ -53,6 +53,21 @@ h1, h2, h3, h4, h5, h6 {
 h3 { font-size: 24px; }
 h4 { font-size: 18px; }
 
+/* ════════════════════════════════════════
+   SCROLL REVEAL — clases inyectadas por JS
+   ════════════════════════════════════════ */
+
+/* Fade-up base */
+[data-sr] {
+  will-change: opacity, transform;
+}
+
+/* Hover lift para cards y botones */
+a[style*="border-radius"],
+button:not([aria-label]) {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
 /* ── Tags / Subtítulos naranjas: Montserrat Bold 15px ── */
 .sec-tag {
   font-family: var(--font-body);
