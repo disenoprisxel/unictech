@@ -43,26 +43,43 @@ export default function ProjectCarousel({ images, nombre, color }: ProjectCarous
           backgroundColor: '#000',
         }}
       >
-        {/* Images — cover, no padding, no borders */}
         {images.map((src, i) => (
-          <img
+          <div
             key={src}
-            src={src}
-            alt={`${nombre} – foto ${i + 1}`}
             style={{
               position: 'absolute', inset: 0,
-              width: '100%', height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              display: 'block',
               opacity: i === current ? 1 : 0,
-              transform: i === current ? 'scale(1)' : 'scale(1.03)',
-              transition: 'opacity 0.5s ease, transform 0.5s ease',
+              transition: 'opacity 0.5s ease',
             }}
-          />
+          >
+            {/* Blurred background — fills the frame with no empty areas */}
+            <img
+              src={src}
+              alt=""
+              aria-hidden="true"
+              style={{
+                position: 'absolute', inset: 0,
+                width: '100%', height: '100%',
+                objectFit: 'cover',
+                filter: 'blur(18px) brightness(0.55)',
+                transform: 'scale(1.08)',
+              }}
+            />
+            {/* Main image — full, unclipped */}
+            <img
+              src={src}
+              alt={`${nombre} – foto ${i + 1}`}
+              style={{
+                position: 'absolute', inset: 0,
+                width: '100%', height: '100%',
+                objectFit: 'contain',
+                display: 'block',
+              }}
+            />
+          </div>
         ))}
 
-        {/* Arrows — appear on hover, only if multiple images */}
+        {/* Arrows — appear on hover */}
         {total > 1 && (
           <>
             <button
@@ -79,9 +96,8 @@ export default function ProjectCarousel({ images, nombre, color }: ProjectCarous
                 border: '1px solid rgba(255,255,255,0.25)',
                 cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'white',
                 opacity: hovered ? 1 : 0,
-                transition: 'opacity 0.25s ease, background 0.2s ease',
+                transition: 'opacity 0.25s ease',
               }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -102,9 +118,8 @@ export default function ProjectCarousel({ images, nombre, color }: ProjectCarous
                 border: '1px solid rgba(255,255,255,0.25)',
                 cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'white',
                 opacity: hovered ? 1 : 0,
-                transition: 'opacity 0.25s ease, background 0.2s ease',
+                transition: 'opacity 0.25s ease',
               }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -114,7 +129,7 @@ export default function ProjectCarousel({ images, nombre, color }: ProjectCarous
           </>
         )}
 
-        {/* Dot indicators — bottom center */}
+        {/* Dot indicators */}
         {total > 1 && (
           <div style={{
             position: 'absolute', bottom: '16px', left: 0, right: 0,
