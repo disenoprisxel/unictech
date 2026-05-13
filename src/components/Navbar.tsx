@@ -26,22 +26,28 @@ export default function Navbar() {
 
       {/* ── Top bar ── */}
       <div className="w-full bg-white border-b border-gray-200">
-        <div className="w-full px-10 flex items-center justify-between h-10">
-          <div className="flex items-center gap-7 text-gray-600 text-[13px] font-semibold">
-            <span className="flex items-center gap-2">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e63012" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              AV. Calle 100 # 60-04
-            </span>
-            <span className="flex items-center gap-2">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e63012" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              (601) 531 8327
-            </span>
-          </div>
+        <div className="w-full px-4 sm:px-10 flex items-center justify-between h-10">
+
+          {/* Dirección — solo desktop */}
+          <span className="hidden md:flex items-center gap-2 text-gray-600 text-[13px] font-semibold">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e63012" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            AV. Calle 100 # 60-04
+          </span>
+
+          {/* Teléfono — siempre visible, centrado en móvil */}
+          <a href="tel:+576015318327"
+            className="flex items-center gap-2 text-gray-600 text-[13px] font-semibold md:ml-0 mx-auto md:mx-0"
+            style={{ textDecoration: 'none', color: 'inherit' }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e63012" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            (601) 531 8327
+          </a>
+
+          {/* Redes sociales */}
           <div className="flex items-center gap-1">
             <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"
               className="flex items-center justify-center w-7 h-7 text-white text-xs font-bold"
