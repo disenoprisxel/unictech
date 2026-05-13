@@ -68,6 +68,23 @@ button:not([aria-label]) {
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
+/* ── Corazón animado en footer ── */
+@keyframes heartColor {
+  0%   { color: #e63012; transform: scale(1);    }
+  20%  { color: #e63012; transform: scale(1.25); }
+  35%  { color: #FFD700; transform: scale(1);    }
+  55%  { color: #FFD700; transform: scale(1.25); }
+  70%  { color: #152674; transform: scale(1);    }
+  90%  { color: #152674; transform: scale(1.25); }
+  100% { color: #e63012; transform: scale(1);    }
+}
+
+.heart-animated {
+  display: inline-block;
+  animation: heartColor 3s ease-in-out infinite;
+  font-size: 1.15em;
+}
+
 /* ── Tags / Subtítulos naranjas: Montserrat Bold 15px ── */
 .sec-tag {
   font-family: var(--font-body);

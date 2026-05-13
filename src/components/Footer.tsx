@@ -138,19 +138,27 @@ export default function Footer() {
 
       {/* ── Bottom bar ── */}
       <div
-        className="border-t px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs"
-        style={{ borderColor: '#222', color: '#555' }}
+        className="border-t px-8 py-5 flex flex-col items-center gap-2 text-xs text-center"
+        style={{ borderColor: '#222', color: '#666' }}
       >
-        <p>
+        <p style={{ color: '#555' }}>
           © Unictech SAS. Todos los derechos reservados.{' '}
           <a href="#" className="hover:text-gray-300 transition-colors">Política de Privacidad</a>
           {' '}-{' '}
           <a href="#" className="hover:text-gray-300 transition-colors">Términos y Condiciones</a>
         </p>
-        <p>
+        <p style={{
+          color: '#888',
+          fontFamily: "'Montserrat', sans-serif",
+          fontWeight: 600,
+          fontSize: '12px',
+          letterSpacing: '0.5px',
+          paddingBottom: '4px',
+        }}>
           Hecho con{' '}
-          <span style={{ color: '#e63012' }}>♥</span>
-          {' '}por Prisxel
+          <span className="heart-animated">♥</span>
+          {' '}por{' '}
+          <span style={{ color: '#fff', fontWeight: 700 }}>Prisxel</span>
         </p>
       </div>
 
