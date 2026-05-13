@@ -22,12 +22,26 @@ export default function MantenimientoForm() {
     formState: { errors, isSubmitting },
   } = useForm<FormData>();
 
+  const [error, setError] = useState('');
+
   const onSubmit = async (data: FormData) => {
-    // Placeholder: integrate with Resend or EmailJS
-    console.log('Mantenimiento form:', data);
-    await new Promise((r) => setTimeout(r, 800));
-    setSent(true);
-    reset();
+    setError('');
+    try {
+      const res = await fetch('/api/mantenimiento', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        setSent(true);
+        reset();
+      } else {
+        setError('Hubo un error al enviar. Intenta de nuevo o escríbenos directamente.');
+      }
+    } catch {
+      setError('Hubo un error al enviar. Intenta de nuevo o escríbenos directamente.');
+    }
   };
 
   const inputClass =
@@ -147,6 +161,10 @@ export default function MantenimientoForm() {
                 <p className="text-red-500 text-xs mt-1">{errors.mensaje.message}</p>
               )}
             </div>
+
+            {error && (
+              <p className="text-red-500 text-sm text-center">{error}</p>
+            )}
 
             <button
               type="submit"
