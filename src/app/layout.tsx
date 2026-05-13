@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   description:
     'Especialistas en sistemas de calefacción, agua caliente, piscinas, chimeneas y energías sostenibles en Colombia.',
   keywords: 'calefacción, agua caliente, piscinas, chimeneas, energías sostenibles, Colombia, Bogotá',
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    shortcut: '/favicon.png',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
