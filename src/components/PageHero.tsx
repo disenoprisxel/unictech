@@ -1,5 +1,3 @@
-import ParallaxImage from './ParallaxImage';
-
 interface PageHeroProps {
   tag?: string;
   title: string;
@@ -8,7 +6,7 @@ interface PageHeroProps {
 }
 
 export default function PageHero({ tag, title, subtitle, image }: PageHeroProps) {
-  /* ── Hero con imagen de fondo + parallax ── */
+  /* ── Hero con imagen de fondo ── */
   if (image) {
     return (
       <section
@@ -16,7 +14,15 @@ export default function PageHero({ tag, title, subtitle, image }: PageHeroProps)
         className="relative flex items-center justify-center text-center"
         style={{ height: '210px', overflow: 'hidden' }}
       >
-        <ParallaxImage src={image} alt={title} />
+        <img
+          src={image}
+          alt={title}
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+          }}
+        />
 
         {/* Overlay */}
         <div style={{
