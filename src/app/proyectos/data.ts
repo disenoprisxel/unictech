@@ -3,13 +3,14 @@ export type Categoria = 'Todas' | 'Calderas' | 'Calefacción' | 'Calentadores' |
 export type Proyecto = {
   slug: string;
   nombre: string;
-  titulo?: string;    // título descriptivo del trabajo realizado (opcional)
-  subtitulo?: string; // línea secundaria entre título y nombre del proyecto (opcional)
+  titulo?: string;      // título descriptivo del trabajo realizado (opcional)
+  subtitulo?: string;   // línea secundaria entre título y nombre del proyecto (opcional)
+  descripcion?: string; // párrafo descriptivo debajo del subtítulo (opcional)
   ubicacion: string;
   categoria: Exclude<Categoria, 'Todas'>;
   año: number;
   images: string[];
-  videos?: string[];  // videos opcionales que se agregan al carousel después de las imágenes
+  videos?: string[];    // videos opcionales que se agregan al carousel después de las imágenes
 };
 
 export const proyectos: Proyecto[] = [
@@ -20,13 +21,13 @@ export const proyectos: Proyecto[] = [
   { slug: 'caldera-bosch-pradera',    nombre: 'Caldera Bosch Therm 8000',                     categoria: 'Calderas',           ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, images: ['/proyectos/pradera-caldera.jpg', '/proyectos/pradera-caldera-2.jpg'] },
   { slug: 'caldera-bosch-colegio',    nombre: 'Caldera Bosch Therm 8000',                     categoria: 'Calderas',           ubicacion: 'Colegio Gimnasio Moderno – Bogotá', año: 2022, images: ['/proyectos/caldera-bosch-colegio.jpg', '/proyectos/caldera-bosch-colegio-2.jpg'] },
   { slug: 'condominio-moraji',        nombre: 'Condominio Moraji', titulo: 'Calefacción Hidrónica con caldera de condensación - UNICAL X+', categoria: 'Calderas', ubicacion: 'Bogotá', año: 2022, images: ['/proyectos/condominio-moraji.jpg'], videos: ['/proyectos/condominio-moraji.mp4'] },
-  { slug: 'calefactores-hongo',       nombre: 'Calefactores tipo Hongo',                      categoria: 'Calefacción',        ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, images: ['/proyectos/calefactor-hongo.jpg']    },
-  { slug: 'calefaccion-electrica',    nombre: 'Calefacción Eléctrica',                        categoria: 'Calefacción',        ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, images: ['/proyectos/pradera-calefaccion.jpg'] },
+  { slug: 'calefactores-hongo',       nombre: 'Calefactores tipo Hongo',                      categoria: 'Calefacción',        ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, images: ['/proyectos/calefactor-hongo.jpg', '/proyectos/calefactor-hongo-2.jpg']    },
+  { slug: 'calefaccion-electrica',    nombre: 'Calefacción Eléctrica',                        categoria: 'Calefacción',        ubicacion: 'La Pradera de Potosí – La Calera',  año: 2021, images: ['/proyectos/pradera-calefaccion.jpg', '/proyectos/pradera-calefaccion-2.jpg'] },
   { slug: 'calentadores-acumulacion', nombre: 'Calentadores de Acumulación Acero Inoxidable', categoria: 'Calentadores',       ubicacion: 'Pradera de Potosí – La Calera',     año: 2021, images: ['/proyectos/calentadores-acumulacion.jpg'] },
   { slug: 'calentador-paso-bosch',    nombre: 'Calentador de Paso Bosch',                     categoria: 'Calentadores',       ubicacion: 'Mesa de Yeguas',                    año: 2022, images: ['/proyectos/calentador-paso-bosch.jpg']    },
-  { slug: 'chimenea-centro-fuego',    nombre: 'Chimenea Centro de Fuego',                     categoria: 'Chimeneas',          ubicacion: 'Pradera Potosí',                    año: 2022, images: ['/proyectos/chimenea-bogota.jpg']     },
+  { slug: 'chimenea-centro-fuego',    nombre: 'Chimenea Centro de Fuego',                     categoria: 'Chimeneas',          ubicacion: 'Pradera Potosí – La Calera',        año: 2022, images: ['/proyectos/chimenea-bogota.jpg'], videos: ['/proyectos/chimenea-centro-fuego.mp4'] },
   { slug: 'chimenea-gas',             nombre: 'Chimenea a Gas – Modulación de Llama',         categoria: 'Chimeneas',          ubicacion: 'Bogotá',                            año: 2022, images: ['/proyectos/chimenea-gas.jpg']           },
-  { slug: 'conjunto-encenillos',      nombre: 'Conjunto Encenillos',                          categoria: 'Colectores Solares', ubicacion: 'Medellín',                          año: 2022, images: ['/proyectos/colector-solar.jpg']      },
+  { slug: 'conjunto-encenillos',      nombre: 'Conjunto Encenillos', titulo: 'Proyecto solar térmico', descripcion: 'Proyecto solar térmico para agua caliente y calefacción, suministro e instalación de colectores Bosch.', categoria: 'Colectores Solares', ubicacion: 'Medellín', año: 2022, images: ['/proyectos/colector-solar.jpg', '/proyectos/encenillos-2.jpg', '/proyectos/encenillos-3.jpg', '/proyectos/encenillos-4.jpg', '/proyectos/encenillos-5.jpg'] },
 ];
 
 export const categoryColors: Record<Exclude<Categoria, 'Todas'>, string> = {

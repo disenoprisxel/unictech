@@ -88,6 +88,17 @@ export default async function ProyectoDetalle({ params }: { params: Promise<{ sl
                 {proyecto.nombre} – {proyecto.ubicacion}
               </p>
 
+              {/* Descripción (opcional) */}
+              {proyecto.descripcion && (
+                <p style={{
+                  fontFamily: "'Montserrat', sans-serif", fontWeight: 500,
+                  fontSize: '14.5px', color: '#4b5563',
+                  lineHeight: 1.8, marginBottom: '32px',
+                }}>
+                  {proyecto.descripcion}
+                </p>
+              )}
+
               {/* Meta row */}
               <div style={{
                 display: 'flex', gap: '28px', flexWrap: 'wrap',
